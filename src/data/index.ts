@@ -6,3 +6,5 @@ export * from "./decisions";
 export * from "./milestones";
 export * from "./dpp";
 export * from "./markets";
+export * from "./regulatory-watch";
+export * from "./changelog";

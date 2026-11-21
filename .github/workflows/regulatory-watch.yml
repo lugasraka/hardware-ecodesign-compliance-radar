@@ -1,0 +1,44 @@
+name: Regulatory watch
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Check official sources
+        run: npm run watch:regulations
+
+      - name: Open review pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: update regulatory watch queue"
+          title: "Regulatory watch: source changes detected"
+          body: |
+            This pull request updates the source state and the candidate watch queue.
+            It does not change the clause library.
+
+            Review the official sources before promoting a candidate. See
+            `docs/regulatory-update-runbook.md` for the checklist.
+          branch: regulatory-watch
+          delete-branch: true
+          add-paths: data/

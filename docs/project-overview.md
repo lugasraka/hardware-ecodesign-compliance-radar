@@ -2,6 +2,8 @@
 
 A portfolio-level compliance workbench for hardware NPI. It turns ecodesign, battery, energy-efficiency, and repairability requirements into product assessments, NPI gate deadlines, owners, and executive decisions.
 
+**Live demo:** https://hardware-ecodesign-compliance-radar.vercel.app/
+
 > **Status:** working prototype. The hero scenario is a 2028 flagship smartphone and the EU Battery Regulation Article 11 decision. Product and program data are illustrative.
 
 ## Who it is for
@@ -44,6 +46,7 @@ The 2027 flagship is the counter-example. Its required-by date has already passe
 | Risks and decisions | 5 × 5 risk heatmap, owners, mitigations, contingencies, and links to briefs |
 | Executive brief | One-page decision artifact with the ask, exposure, weighted options, recommendation, dissent, owners, and gates |
 | Regulatory pipeline | Delegated acts, standards, consultations, and advocacy positions |
+| Data changelog | Reviewed data releases and the watch queue |
 | Methodology | The four-state model, tri-state engine, scheduling formula, repairability formula, scope decisions, sources, and limits |
 
 ## Screenshots
@@ -66,7 +69,7 @@ The 2027 flagship is the counter-example. Its required-by date has already passe
 
 ![Print-ready executive decision brief](screenshots/brief-print.png)
 
-More views: [risk register](screenshots/risks.png) · [regulatory pipeline](screenshots/pipeline.png) · [methodology](screenshots/methodology.png) · [mobile portfolio](screenshots/portfolio-mobile.png)
+More views: [risk register](screenshots/risks.png) · [regulatory pipeline](screenshots/pipeline.png) · [data changelog](screenshots/changelog.png) · [methodology](screenshots/methodology.png) · [mobile portfolio](screenshots/portfolio-mobile.png)
 
 ## Architecture
 
@@ -117,6 +120,15 @@ Scope decisions that shaped the model:
 - EU 2025/2052 has four dates: early compliance (14 Dec 2025), general application (14 Dec 2028), >100 W USB-PD efficiency transition (14 Dec 2030), and spare-part EPS (14 Dec 2033).
 
 Full sources and last-verified dates are in [sources.md](sources.md).
+
+## Keeping data current
+
+The dataset is a reviewed snapshot. A weekly GitHub Action checks the official sources. When a source changes, it opens a pull request with a candidate. A human verifies the source, updates the clause, adds a changelog entry, and merges. Vercel then rebuilds the static app.
+
+The app shows the last verified date, the next review date, and the watch queue. The action never rewrites a legal threshold or an applicability rule.
+
+- [Update runbook](regulatory-update-runbook.md)
+- [Data changelog](https://hardware-ecodesign-compliance-radar.vercel.app/changelog/)
 
 ## Run locally
 

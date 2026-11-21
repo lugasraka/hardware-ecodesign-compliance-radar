@@ -4,6 +4,8 @@
 
 This is a curated snapshot for a portfolio prototype, not a live regulatory feed and not legal advice. Each instrument below has an official source; each clause in `src/data/clauses.ts` carries a source URL and a last-verified date.
 
+A weekly GitHub Action checks the automated subset of these sources. A human reviews any change before the clause library is updated. The California and CPCB portals are checked manually because they block automated requests. See the [update runbook](regulatory-update-runbook.md).
+
 ## Core instruments
 
 | Instrument | Jurisdiction | Applies from | Source | Confidence |

@@ -6,6 +6,7 @@ import {
   BookOpen,
   ChevronRight,
   FileText,
+  History,
   Info,
   LayoutDashboard,
   Radar,
@@ -24,6 +25,7 @@ const primaryNav = [
 
 const referenceNav = [
   { href: "/methodology/", label: "Methodology", icon: BookOpen },
+  { href: "/changelog/", label: "Data changelog", icon: History },
   { href: "/about/", label: "About this demo", icon: Info },
 ];
 
@@ -191,6 +193,12 @@ export function MobileNav() {
           className="whitespace-nowrap rounded-full border border-zinc-200 bg-white px-3 py-1 text-[13px] font-medium text-zinc-600"
         >
           Methodology
+        </Link>
+        <Link
+          href="/changelog/"
+          className="whitespace-nowrap rounded-full border border-zinc-200 bg-white px-3 py-1 text-[13px] font-medium text-zinc-600"
+        >
+          Changelog
         </Link>
         <StartTourButton compact />
       </nav>

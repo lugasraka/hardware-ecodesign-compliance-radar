@@ -8,8 +8,17 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { instruments } from "@/data/instruments";
+import { regulatoryWatch } from "@/data/regulatory-watch";
+import {
+  DATA_LAST_VERIFIED,
+  getNextReviewDue,
+} from "@/domain/freshness";
 import { formatDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
+import { FreshnessBadge } from "@/components/freshness-badge";
+
+const RUNBOOK_URL =
+  "https://github.com/lugasraka/hardware-ecodesign-compliance-radar/blob/main/docs/regulatory-update-runbook.md";
 
 const SECTIONS = [
   { id: "thesis", label: "Four things to keep separate" },
@@ -67,6 +76,10 @@ export default function MethodologyPage() {
   const sortedInstruments = [...instruments].sort((a, b) =>
     a.jurisdiction.localeCompare(b.jurisdiction) || a.shortId.localeCompare(b.shortId),
   );
+  const nextReviewDue = getNextReviewDue(DATA_LAST_VERIFIED);
+  const openWatchItems = regulatoryWatch.filter(
+    (item) => item.status === "new" || item.status === "triaged",
+  ).length;
 
   return (
     <div>
@@ -96,6 +109,32 @@ export default function MethodologyPage() {
           </span>
         </div>
       </header>
+
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-3">
+        <p className="text-[12px] text-zinc-600">
+          <span className="font-medium text-zinc-900">Regulatory data:</span> last
+          verified {formatDate(DATA_LAST_VERIFIED)}. Next review{" "}
+          {formatDate(nextReviewDue)}. {openWatchItems} watch items.
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <FreshnessBadge lastVerified={DATA_LAST_VERIFIED} />
+          <Link
+            href="/changelog/"
+            className="text-[11px] font-medium text-blue-700 hover:text-blue-800"
+          >
+            Changelog
+          </Link>
+          <a
+            href={RUNBOOK_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-[11px] font-medium text-zinc-500 hover:text-blue-700"
+          >
+            Update runbook
+            <ArrowUpRight size={10} />
+          </a>
+        </div>
+      </div>
 
       <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-5">
         <p className="label text-blue-700">TL;DR</p>

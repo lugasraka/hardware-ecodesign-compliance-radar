@@ -8,9 +8,11 @@ import {
 } from "lucide-react";
 import { instruments } from "@/data/instruments";
 import { milestones } from "@/data/milestones";
+import { regulatoryWatch } from "@/data/regulatory-watch";
 import { formatDate } from "@/lib/date";
 import { cn, groupBy } from "@/lib/utils";
 import { KpiCard, PageHeader, Panel } from "@/components/primitives";
+import { WatchQueue } from "@/components/watch-queue";
 
 const STAGE_STYLES: Record<string, string> = {
   proposal: "border-violet-200 bg-violet-50 text-violet-800",
@@ -72,6 +74,9 @@ export default function PipelinePage() {
     (milestone) => milestone.stage === "consultation" || milestone.stage === "proposal",
   ).length;
   const standards = upcoming.filter((milestone) => milestone.stage === "standard").length;
+  const openWatchItems = regulatoryWatch.filter(
+    (item) => item.status === "new" || item.status === "triaged",
+  ).length;
 
   return (
     <div>
@@ -110,9 +115,10 @@ export default function PipelinePage() {
           tone="info"
         />
         <KpiCard
-          label="Monitoring only"
-          value={upcoming.filter((milestone) => milestone.confidence === "low").length}
-          detail="lower-confidence jurisdictions"
+          label="Watch queue"
+          value={openWatchItems}
+          detail="open watch items"
+          tone="warning"
         />
       </div>
 
@@ -275,6 +281,23 @@ export default function PipelinePage() {
           </Panel>
         </div>
       </div>
+
+      <Panel
+        className="mt-5"
+        title="Watch queue"
+        description="Candidate changes from source monitoring. They stay here until a human verifies the official text."
+        action={
+          <Link
+            href="/changelog/"
+            className="text-[10px] font-medium text-blue-700 hover:text-blue-800"
+          >
+            Data changelog
+          </Link>
+        }
+        bodyClassName="p-0"
+      >
+        <WatchQueue items={regulatoryWatch} />
+      </Panel>
     </div>
   );
 }

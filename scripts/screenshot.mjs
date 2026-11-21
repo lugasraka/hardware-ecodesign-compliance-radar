@@ -58,10 +58,17 @@ for (const [name, path] of [
   ["brief", "/brief/phone-orbit-2028/"],
   ["risks", "/risks/"],
   ["pipeline", "/pipeline/"],
+  ["changelog", "/changelog/"],
   ["methodology", "/methodology/"],
 ]) {
+  if (name === "changelog") {
+    await desktop.setViewportSize({ width: 1440, height: 1900 });
+  }
   await desktop.goto(`${base}${path}`, { waitUntil: "networkidle" });
   await desktop.screenshot({ path: `${outDir}/${name}.png` });
+  if (name === "changelog") {
+    await desktop.setViewportSize({ width: 1440, height: 1000 });
+  }
   console.log(name);
 }
 

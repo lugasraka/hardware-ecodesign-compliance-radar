@@ -1,12 +1,14 @@
 import { assessProduct, DEMO_AS_OF } from "@/domain/engine";
 import type { MarketCode } from "@/domain/types";
 import { clauses } from "./clauses";
+import { dataReleases } from "./changelog";
 import { decisions } from "./decisions";
 import { dppFields } from "./dpp";
 import { instruments } from "./instruments";
 import { markets } from "./markets";
 import { milestones } from "./milestones";
 import { products } from "./products";
+import { regulatoryWatch } from "./regulatory-watch";
 import { risks } from "./risks";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -23,6 +25,8 @@ export interface ValidationResult {
     decisions: number;
     milestones: number;
     dppFields: number;
+    watchItems: number;
+    dataReleases: number;
   };
 }
 
@@ -59,6 +63,12 @@ export function validateData(): ValidationResult {
   }
   for (const duplicate of duplicates(decisions.map((decision) => decision.id))) {
     errors.push(`Duplicate decision id: ${duplicate}`);
+  }
+  for (const duplicate of duplicates(regulatoryWatch.map((item) => item.id))) {
+    errors.push(`Duplicate watch item id: ${duplicate}`);
+  }
+  for (const duplicate of duplicates(dataReleases.map((release) => release.version))) {
+    errors.push(`Duplicate data release version: ${duplicate}`);
   }
 
   for (const instrument of instruments) {
@@ -199,6 +209,30 @@ export function validateData(): ValidationResult {
     }
   }
 
+  for (const item of regulatoryWatch) {
+    if (item.instrumentId && !instrumentIds.has(item.instrumentId)) {
+      errors.push(`Watch item ${item.id} references missing instrument ${item.instrumentId}`);
+    }
+    if (!item.sourceUrl.startsWith("http")) {
+      errors.push(`Watch item ${item.id} has no valid source URL`);
+    }
+    if (!ISO_DATE.test(item.detectedAt)) {
+      errors.push(`Watch item ${item.id} has an invalid detected date`);
+    }
+    if (item.publishedAt && !ISO_DATE.test(item.publishedAt)) {
+      errors.push(`Watch item ${item.id} has an invalid published date`);
+    }
+  }
+
+  for (const release of dataReleases) {
+    if (!ISO_DATE.test(release.date)) {
+      errors.push(`Data release ${release.version} has an invalid date`);
+    }
+    if (!release.version || !release.title || !release.reviewedBy) {
+      errors.push(`Data release ${release.version} is missing version, title or reviewer`);
+    }
+  }
+
   let assessmentCount = 0;
   for (const product of products) {
     try {
@@ -270,6 +304,8 @@ export function validateData(): ValidationResult {
       decisions: decisions.length,
       milestones: milestones.length,
       dppFields: dppFields.length,
+      watchItems: regulatoryWatch.length,
+      dataReleases: dataReleases.length,
     },
   };
 }

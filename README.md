@@ -2,6 +2,8 @@
 
 A portfolio-level compliance workbench for hardware NPI. It turns ecodesign, battery, energy-efficiency, and repairability requirements into product-level assessments, NPI gate deadlines, owners, and executive decisions.
 
+**Live demo:** https://hardware-ecodesign-compliance-radar.vercel.app/
+
 ![Portfolio review](docs/screenshots/portfolio.png)
 
 ## Who it is for
@@ -42,14 +44,22 @@ npm run check
 
 Runs typecheck, lint, tests, regulatory data validation, and a production build.
 
+## Keeping data current
+
+Regulatory data is a curated snapshot. A weekly source check watches the official pages. When a source changes, it opens a pull request with a candidate. A human reviews the official text, updates the clause, and records the change. The app shows the last verified date and the review queue.
+
+- [Update runbook](docs/regulatory-update-runbook.md)
+- [Data changelog](https://hardware-ecodesign-compliance-radar.vercel.app/changelog/)
+
 ## Deploy
 
-Import the repo into Vercel. Use the Next.js preset, build with `npm run build`, and output `out`. No environment variables are required.
+The app is live at https://hardware-ecodesign-compliance-radar.vercel.app/. The repo is connected to Vercel. For a new environment, import the repo into Vercel. Use the Next.js preset, build with `npm run build`, and output `out`. No environment variables are required.
 
 ## Documentation
 
 - [Detailed project overview](docs/project-overview.md)
 - [Regulatory sources and scope corrections](docs/sources.md)
+- [Regulatory update runbook](docs/regulatory-update-runbook.md)
 - [Original architecture notes](docs/ed-radar-architecture.md)
 - [Case-study draft](docs/description-writeup.md)
 

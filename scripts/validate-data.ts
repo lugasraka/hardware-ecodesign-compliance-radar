@@ -15,5 +15,5 @@ if (result.errors.length > 0) {
 }
 
 console.log(
-  `Data validation passed: ${result.stats.instruments} instruments, ${result.stats.clauses} clauses, ${result.stats.products} products, ${result.stats.assessments} assessments, ${result.stats.risks} risks, ${result.stats.decisions} decisions.`,
+  `Data validation passed: ${result.stats.instruments} instruments, ${result.stats.clauses} clauses, ${result.stats.products} products, ${result.stats.assessments} assessments, ${result.stats.risks} risks, ${result.stats.decisions} decisions, ${result.stats.watchItems} watch items, ${result.stats.dataReleases} data releases.`,
 );
