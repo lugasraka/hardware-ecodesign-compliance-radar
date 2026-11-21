@@ -39,7 +39,7 @@ const DEMO_STEPS = [
   },
   {
     title: "Generate the brief",
-    body: "The one-page brief has the ask, exposure, a weighted options matrix, the recommendation, owners, gates, and dissent.",
+    body: "The summary view has the ask, exposure, weighted options, recommendation, owners, gates, and dissent. The print/PDF view is a one-page A4 summary. The full brief adds the complete decision matrix and option detail.",
     href: "/brief/phone-orbit-2028/",
     label: "Open exec brief",
   },

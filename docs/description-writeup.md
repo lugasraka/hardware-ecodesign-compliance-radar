@@ -50,8 +50,8 @@ The brief compares four options: a user-removable battery, a professional-only d
 | Regulatory scope | 13 instruments and 36 clauses across EU, French, and US regimes, with sources and last-verified dates |
 | Program management | NPI Gantt, risk register, decision log, required-by dates, owners, and gates |
 | Repairability | EU 2023/1669 repairability class, part-level inputs, design levers, and a separate France laptop model |
-| Engineering | Typed predicates, tri-state evaluation, traceable results, 52 tests, data validation, CI, and a static build |
-| Executive communication | One-page brief with a one-line ask, weighted options, recommendation, dissent, and owners |
+| Engineering | Typed predicates, tri-state evaluation, traceable results, 70 tests, data validation, CI, and a static build |
+| Executive communication | One-page print/PDF summary plus a full web brief with the ask, weighted options, recommendation, dissent, and owners |
 | Influence | Regulatory pipeline with consultations, delegated acts, standards, and advocacy positions |
 | Product design | Portfolio-first home, tabbed workspace, guided tour, and a live what-if panel |
 

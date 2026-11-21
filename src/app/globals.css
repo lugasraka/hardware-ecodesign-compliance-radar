@@ -64,18 +64,31 @@ body {
   text-decoration-color: #1d4ed8;
 }
 
+.print-only {
+  display: none;
+}
+
 @media print {
   .no-print {
     display: none !important;
   }
 
-  body {
-    background: #ffffff;
+  .print-only {
+    display: block !important;
   }
 
-  .print-sheet {
-    border: 0 !important;
-    box-shadow: none !important;
+  html,
+  body {
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  main {
     margin: 0 !important;
     max-width: none !important;
     padding: 0 !important;
@@ -87,6 +100,6 @@ body {
 
   @page {
     size: A4;
-    margin: 14mm;
+    margin: 10mm;
   }
 }

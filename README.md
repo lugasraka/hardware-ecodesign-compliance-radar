@@ -16,7 +16,7 @@ Built for product environmental compliance teams at electronics and hardware com
 - Pins each requirement to an NPI lock-in gate and computes the required-by date from qualification lead time and decision buffer.
 - Separates applicability, technical conformity, evidence, and program timing, so "unknown" and "evidence missing" stay visible.
 - Computes the EU smartphone and tablet repairability class from the official 2023/1669 formula.
-- Generates a print-ready one-page executive decision brief with a weighted options matrix.
+- Generates a one-page print/PDF executive brief, with a summary/full-brief toggle and the weighted options matrix in the web view.
 - Includes a three-minute guided tour and a live what-if panel for product changes.
 
 ## Hero scenario

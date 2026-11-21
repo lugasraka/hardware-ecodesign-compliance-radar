@@ -178,7 +178,7 @@ export default function PortfolioPage() {
       <Panel
         className="mt-5"
         title="Decisions that need attention"
-        description="The next executive calls, ordered by decision date. Open one to see the one-page brief."
+        description="The next executive calls, ordered by decision date. Open one to see the executive summary and one-page PDF."
         action={
           <span className="rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 font-mono text-[12px] text-zinc-600">
             {decisions.filter((decision) => decision.status === "pending").length} pending

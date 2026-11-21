@@ -44,7 +44,7 @@ The 2027 flagship is the counter-example. Its required-by date has already passe
 | Repairability scorecard | EU smartphone and tablet repairability class, part-level inputs, design levers, and an illustrative France index for laptops |
 | Evidence | Missing, partial, ready, and expired artifacts, filtered to gaps by default |
 | Risks and decisions | 5 × 5 risk heatmap, owners, mitigations, contingencies, and links to briefs |
-| Executive brief | One-page decision artifact with the ask, exposure, weighted options, recommendation, dissent, owners, and gates |
+| Executive brief | One-page print/PDF summary plus a full web brief with the ask, exposure, weighted options, recommendation, dissent, owners, and gates |
 | Regulatory pipeline | Delegated acts, standards, consultations, and advocacy positions |
 | Data changelog | Reviewed data releases and the watch queue |
 | Methodology | The four-state model, tri-state engine, scheduling formula, repairability formula, scope decisions, sources, and limits |
@@ -67,7 +67,11 @@ The 2027 flagship is the counter-example. Its required-by date has already passe
 |---|---|
 | ![NPI decision windows](screenshots/product-schedule.png) | ![Repairability scorecard](screenshots/product-repairability.png) |
 
-![Print-ready executive decision brief](screenshots/brief-print.png)
+| Executive summary | Full brief |
+|---|---|
+| ![Executive summary](screenshots/brief.png) | ![Full brief](screenshots/brief-full.png) |
+
+![One-page print/PDF executive brief](screenshots/brief-print.png)
 
 More views: [risk register](screenshots/risks.png) · [regulatory pipeline](screenshots/pipeline.png) · [data changelog](screenshots/changelog.png) · [methodology](screenshots/methodology.png) · [mobile portfolio](screenshots/portfolio-mobile.png)
 

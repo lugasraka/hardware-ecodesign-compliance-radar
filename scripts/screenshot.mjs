@@ -61,11 +61,21 @@ for (const [name, path] of [
   ["changelog", "/changelog/"],
   ["methodology", "/methodology/"],
 ]) {
+  if (name === "brief") {
+    await desktop.setViewportSize({ width: 1440, height: 1900 });
+  }
   if (name === "changelog") {
     await desktop.setViewportSize({ width: 1440, height: 2200 });
   }
   await desktop.goto(`${base}${path}`, { waitUntil: "networkidle" });
   await desktop.screenshot({ path: `${outDir}/${name}.png` });
+  if (name === "brief") {
+    await desktop.getByRole("button", { name: "Full brief", exact: true }).click();
+    await desktop.waitForTimeout(250);
+    await desktop.setViewportSize({ width: 1440, height: 1000 });
+    await desktop.evaluate(() => window.scrollTo(0, 0));
+    await desktop.screenshot({ path: `${outDir}/brief-full.png` });
+  }
   if (name === "changelog") {
     await desktop.setViewportSize({ width: 1440, height: 1000 });
   }
@@ -73,13 +83,39 @@ for (const [name, path] of [
 }
 
 const print = await browser.newPage({
-  viewport: { width: 794, height: 1123 },
+  viewport: { width: 718, height: 1047 },
   deviceScaleFactor: 1,
 });
-await print.goto(`${base}/brief/phone-orbit-2028/`, { waitUntil: "networkidle" });
-await print.emulateMedia({ media: "print" });
-await print.screenshot({ path: `${outDir}/brief-print.png`, fullPage: true });
-console.log("print brief");
+
+const printBriefs = [
+  "phone-orbit-2028",
+  "phone-orbit-2027",
+  "adapter-volt-96w",
+  "laptop-vertex-2028",
+];
+
+for (const slug of printBriefs) {
+  await print.goto(`${base}/brief/${slug}/`, { waitUntil: "networkidle" });
+  await print.emulateMedia({ media: "print" });
+  if (slug === "phone-orbit-2028") {
+    await print.screenshot({ path: `${outDir}/brief-print.png` });
+  }
+  const printHeight = await print.evaluate(() => {
+    const element = document.querySelector(".print-only");
+    return element ? Math.ceil(element.getBoundingClientRect().height) : null;
+  });
+  const pdf = await print.pdf({ format: "A4", printBackground: true });
+  const pageCount = (pdf.toString("latin1").match(/\/Type\s*\/Page\b/g) || []).length;
+  console.log(`print brief ${slug}: ${printHeight}px, ${pageCount} page(s)`);
+  if (!printHeight || printHeight > 1046) {
+    throw new Error(
+      `One-pager ${slug} is ${printHeight}px tall, above the 1046px A4 printable height`,
+    );
+  }
+  if (pageCount !== 1) {
+    throw new Error(`Expected a one-page brief for ${slug}, got ${pageCount} pages`);
+  }
+}
 
 const mobile = await browser.newPage({
   viewport: { width: 390, height: 844 },
