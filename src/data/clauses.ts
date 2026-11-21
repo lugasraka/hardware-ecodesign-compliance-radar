@@ -727,7 +727,7 @@ export const clauses: Clause[] = [
     articleRef: "Article 77(1)",
     title: "Battery passport scope check",
     summary:
-      "The battery passport applies to LMT batteries, EV batteries, and industrial batteries above 2 kWh — not to portable batteries.",
+      "The battery passport applies to LMT batteries, EV batteries, and industrial batteries above 2 kWh. It does not apply to portable batteries.",
     legalText:
       "From 18 February 2027 each LMT battery, each industrial battery with a capacity greater than 2 kWh and each electric vehicle battery placed on the market or put into service shall have an electronic record ('battery passport').",
     interpretation:
@@ -905,7 +905,7 @@ export const clauses: Clause[] = [
     articleRef: "Annex II, point 1(a)",
     title: "No-load power consumption",
     summary:
-      "No-load power must not exceed 0.15 W for single-voltage AC-DC EPS in the 49–250 W range and above 250 W.",
+      "No-load power must not exceed 0.15 W for single-voltage AC-DC EPS in the 49 to 250 W range and above 250 W.",
     legalText:
       "The no-load condition power consumption of EPS shall not exceed the values set out in Table 1.",
     interpretation:
@@ -1140,7 +1140,7 @@ export const clauses: Clause[] = [
     id: "eu-1669-repairability-class",
     instrumentId: "eu-2023-1669",
     articleRef: "Annex II, point C and Annex IV, point 5",
-    title: "Repairability class A–E on the energy label",
+    title: "Repairability class A to E on the energy label",
     summary:
       "The label must show the repairability class calculated from the six-parameter EU repairability index.",
     legalText:

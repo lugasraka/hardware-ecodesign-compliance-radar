@@ -127,7 +127,7 @@ export function BriefView({ brief }: { brief: BriefData }) {
             <h2 className="text-[12px] font-semibold uppercase tracking-[0.12em] text-zinc-500">
               Decision matrix
             </h2>
-            <p className="text-[10px] text-zinc-400">Scores 1–5, 5 = best</p>
+            <p className="text-[10px] text-zinc-400">Scores 1 to 5, 5 = best</p>
           </div>
           <div className="mt-2 overflow-x-auto rounded border border-zinc-200">
             <table className="w-full border-collapse text-left">
@@ -328,8 +328,9 @@ export function BriefView({ brief }: { brief: BriefData }) {
           </div>
           <p className="mt-2 text-[7px] leading-3 text-zinc-400">
             Illustrative product and program data. Regulatory data last verified 20 Nov
-            2026. Not legal advice. Not affiliated with Apple. Prepared with a
-            deterministic rule engine; no LLM is used in the compliance path.
+            2026. Not legal advice. Built for electronics and hardware product teams.
+            Prepared with a deterministic rule engine; no LLM is used in the compliance
+            path.
           </p>
         </section>
       </article>

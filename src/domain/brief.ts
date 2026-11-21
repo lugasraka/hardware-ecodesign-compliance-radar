@@ -81,7 +81,7 @@ function buildMarkdown({
     )
     .join("\n");
 
-  return `# Executive decision brief — ${product.name}
+  return `# Executive decision brief: ${product.name}
 
 **Decision owner:** ${decision.owner}  
 **Decision date:** ${formatDate(decision.decisionDate)}  
@@ -101,12 +101,12 @@ ${whyNow.map((line) => `- ${line}`).join("\n")}
 - Market-access blockers: ${summary.blockers}
 - At-risk findings: ${summary.atRisk}
 - Evidence gaps: ${summary.evidenceGaps}
-- Revenue at risk (base): ${formatUsd(summary.exposureUsd.base)} (${formatUsd(summary.exposureUsd.low)}–${formatUsd(summary.exposureUsd.high)})
+- Revenue at risk (base): ${formatUsd(summary.exposureUsd.base)} (${formatUsd(summary.exposureUsd.low)} to ${formatUsd(summary.exposureUsd.high)})
 - Markets: ${product.markets.join(", ")}
 
 ## Decision matrix
 
-Scores 1–5, where 5 is best. Weights: ${criteria
+Scores 1 to 5, where 5 is best. Weights: ${criteria
     .map((criterion) => `${criterion.label} ${Math.round(criterion.weight * 100)}%`)
     .join(" · ")}.
 
@@ -148,7 +148,7 @@ ${riskRows}
 
 Illustrative product and program data. Regulatory data last verified ${formatDate(
     DEMO_AS_OF,
-  )}. Not affiliated with Apple.
+  )}. Not legal advice. Built for electronics and hardware product teams.
 `;
 }
 
@@ -177,7 +177,7 @@ export function buildBrief(
     : undefined;
 
   const ask = top
-    ? `Approve Option ${top.option.id.toUpperCase()} — ${top.option.label} — by ${formatDate(
+    ? `Approve Option ${top.option.id.toUpperCase()}: ${top.option.label}, by ${formatDate(
         decision.decisionDate,
       )}.`
     : "Confirm the compliance position and assign owners to the top findings.";

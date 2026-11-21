@@ -18,7 +18,7 @@ export default function RisksPage() {
       <PageHeader
         eyebrow="Program risk"
         title="Risk register"
-        description={`${risks.length} program risks across the portfolio, with ${critical} critical and ${high} high. Scores are likelihood × impact before mitigation; the decision log connects each material risk to an executive brief.`}
+        description={`${risks.length} program risks across the portfolio, with ${critical} critical and ${high} high. Scores are likelihood × impact before mitigation. The decision log links each material risk to a brief.`}
       />
       <RiskRegister risks={risks} products={products} decisions={decisions} />
     </div>

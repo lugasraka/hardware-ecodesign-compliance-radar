@@ -79,7 +79,7 @@ export const instruments: Instrument[] = [
     publishedDate: "2023-08-31",
     applicationDate: "2025-06-20",
     summary:
-      "Energy label for smartphones and slate tablets, including energy efficiency class, battery endurance, IP rating, drop resistance, and a repairability class A–E calculated from the Annex IV repairability index.",
+      "Energy label for smartphones and slate tablets, including energy efficiency class, battery endurance, IP rating, drop resistance, and a repairability class A to E calculated from the Annex IV repairability index.",
     sourceUrl: "https://eur-lex.europa.eu/eli/reg_del/2023/1669/oj/eng",
     celex: "32023R1669",
     lastVerified: VERIFIED,
@@ -169,7 +169,7 @@ export const instruments: Instrument[] = [
     publishedDate: "2023-10-10",
     applicationDate: "2024-07-01",
     summary:
-      "Requires manufacturers of consumer electronic devices to provide parts, tools, documentation, and software for repair for 3 years for devices priced $50–$99.99 and 7 years for devices priced $100 or more.",
+      "Requires manufacturers of consumer electronic devices to provide parts, tools, documentation, and software for repair for 3 years for devices priced $50 to $99.99 and 7 years for devices priced $100 or more.",
     sourceUrl:
       "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB244",
     lastVerified: VERIFIED,

@@ -144,7 +144,8 @@ export function SideNav() {
           <span>Data as of 20 Nov 2026</span>
         </div>
         <p className="mt-1.5 text-[12px] leading-4 text-zinc-400">
-          Illustrative product data. Not legal advice. Not affiliated with Apple.
+          Illustrative product data. Not legal advice. Built for electronics and
+          hardware product teams.
         </p>
       </div>
     </aside>

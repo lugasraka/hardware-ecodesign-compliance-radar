@@ -48,7 +48,7 @@ export const dppFields: DPPField[] = [
   },
   {
     id: "dpp-recycled-aluminium",
-    label: "Recycled content — aluminium",
+    label: "Recycled content: aluminium",
     productGroup: "ICT / electronics (provisional)",
     legalBasis: "ESPR recycled-content delegated act (pending)",
     accessTier: "authority",

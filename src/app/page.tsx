@@ -89,8 +89,8 @@ export default function PortfolioPage() {
               Follow one decision from regulation to recommendation.
             </h2>
             <p className="mt-2 max-w-xl text-[13px] leading-5 text-blue-900">
-              Three minutes. One product, one blocker, one executive brief. The full
-              ledger and methodology are still here when you want them.
+              A three-minute path through one product&apos;s blocker and the executive
+              brief. The full ledger and methodology are here when you need them.
             </p>
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <Link
@@ -170,7 +170,7 @@ export default function PortfolioPage() {
         <KpiCard
           label="Revenue exposed"
           value={formatUsd(exposure.base)}
-          detail={`${formatUsd(exposure.low)} – ${formatUsd(exposure.high)} range`}
+          detail={`${formatUsd(exposure.low)} to ${formatUsd(exposure.high)} range`}
           tone="danger"
         />
       </div>

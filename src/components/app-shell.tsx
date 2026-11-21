@@ -16,7 +16,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <footer className="no-print border-t border-zinc-200 px-4 py-4 sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-[1500px] flex-col gap-1 text-[12px] text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
               <p>
-                Illustrative product data. Not legal advice. Not affiliated with Apple.
+                Illustrative product data. Not legal advice. Built for electronics and
+                hardware product teams.
               </p>
               <p>
                 Regulatory data last verified 20 Nov 2026 · Next.js + TypeScript

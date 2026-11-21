@@ -275,7 +275,7 @@ export function RequirementsTable({
                     "Owner",
                     "Gate",
                     "Required by",
-                    "Attributed",
+                    "Attributed revenue",
                   ].map((header) => (
                     <th
                       key={header}
@@ -464,7 +464,7 @@ function ClauseDetail({ row }: { row: Row }) {
             <span className="hidden text-[11px] text-zinc-400 group-open:inline">▾</span>
           </summary>
           <blockquote className="mt-1.5 border-l-2 border-zinc-300 pl-2.5 text-[12px] leading-5 text-zinc-600">
-            “{clause.legalText}”
+            &quot;{clause.legalText}&quot;
           </blockquote>
         </details>
 

@@ -8,44 +8,44 @@ import {
   GitBranch,
   Layers,
   ShieldAlert,
-  Sparkles,
+  User,
 } from "lucide-react";
 import { PageHeader, Panel } from "@/components/primitives";
 
 const DEMO_STEPS = [
   {
     title: "Start with the portfolio",
-    body: "See the product × regulation heatmap, the decisions due, the top risks, and the regulatory watch. The home view is a program review, not a landing page.",
+    body: "See the product and regulation heatmap, the decisions due, the top risks, and the regulatory watch.",
     href: "/",
     label: "Open portfolio",
   },
   {
     title: "Follow the Article 11 decision",
-    body: "Open the 2028 flagship. The battery is professional-serviceable and 1,000-cycle, but it is not user-removable. The Article 11 decision window is closing.",
+    body: "Open the 2028 flagship. The battery is professional-serviceable and rated for 1,000 cycles, but it is not user-removable. The Article 11 decision window is closing.",
     href: "/products/phone-orbit-2028/",
     label: "Open hero product",
   },
   {
     title: "Read the requirement ledger",
-    body: "Select the Article 11 clause. The detail panel shows the legal text, the interpretation status, the predicate trace, the evidence requirements, and the required-by date.",
+    body: "Select the Article 11 clause. The detail panel shows the legal text, interpretation, predicate trace, evidence, and required-by date.",
     href: "/products/phone-orbit-2028/#requirements",
     label: "Open requirements",
   },
   {
     title: "Inspect the schedule",
-    body: "The Gantt works backward from the lock-in gate. It shows the decision window, the late items, the regulatory milestones, and the as-of date.",
+    body: "The Gantt works backward from the lock-in gate. It shows the decision window, late items, regulatory milestones, and the as-of date.",
     href: "/products/phone-orbit-2028/#schedule",
     label: "Open schedule",
   },
   {
     title: "Generate the brief",
-    body: "The one-page brief has a one-line ask, exposure, a weighted options matrix, the recommendation, what would change it, owners, gates, and dissent.",
+    body: "The one-page brief has the ask, exposure, a weighted options matrix, the recommendation, owners, gates, and dissent.",
     href: "/brief/phone-orbit-2028/",
     label: "Open exec brief",
   },
   {
     title: "Read the methodology",
-    body: "The methodology page explains the four-state model, the tri-state engine, the scheduling formula, the repairability formula, the scope corrections, and the limitations.",
+    body: "The methodology page explains the four-state model, the tri-state engine, the scheduling formula, the repairability formula, scope decisions, and limitations.",
     href: "/methodology/",
     label: "Open methodology",
   },
@@ -57,7 +57,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About this demo"
         title="A working prototype for product environmental compliance strategy."
-        description="Built to demonstrate the operating model of a Product Environmental Compliance Strategy EPM: interpret the law, translate it into engineering constraints, expose the program risk, and give leaders a real decision."
+        description="Built for product environmental compliance teams at electronics and hardware companies, including Apple, Amazon, Samsung, Siemens, and similar OEMs. The demo shows how a compliance EPM turns regulation into product constraints, program risk, and a decision."
         actions={
           <Link
             href="/products/phone-orbit-2028/"
@@ -72,7 +72,7 @@ export default function AboutPage() {
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(320px,1fr)]">
         <Panel
           title="The five-minute path"
-          description="A recruiter or hiring manager should be able to see the signal without reading a manual."
+          description="A hiring manager should be able to see the signal without reading a manual."
         >
           <ol className="space-y-3">
             {DEMO_STEPS.map((step, index) => (
@@ -97,13 +97,13 @@ export default function AboutPage() {
         </Panel>
 
         <div className="space-y-5">
-          <Panel title="What this is" description="The honest scope.">
+          <Panel title="What it covers">
             <ul className="space-y-2">
               {[
                 "A portfolio-level compliance workbench with a deterministic applicability engine.",
-                "A program artifact: requirement ledger, NPI Gantt, risk register, decision log, and one-page brief.",
-                "A repairability scorecard that implements the official EU smartphone/tablet formula.",
-                "A demonstration of regulatory strategy, not only regulatory tracking.",
+                "A requirement ledger, NPI Gantt, risk register, decision log, and one-page brief.",
+                "A repairability scorecard for the official EU smartphone and tablet formula.",
+                "A regulatory strategy layer with consultations and advocacy positions.",
               ].map((item) => (
                 <li key={item} className="flex gap-2">
                   <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-600" />
@@ -113,13 +113,13 @@ export default function AboutPage() {
             </ul>
           </Panel>
 
-          <Panel title="What this is not" description="The boundaries matter.">
+          <Panel title="Limits" description="What the prototype does not do.">
             <ul className="space-y-2">
               {[
-                "Not legal advice. Confirm every interpretation with Legal and the primary source.",
-                "Not Apple data. Product names, units, costs, and program dates are illustrative.",
-                "Not a production workflow tool. There is no auth, PLM/BOM integration, or audit log.",
-                "Not a live regulatory feed. The data is a curated snapshot verified on 20 Nov 2026.",
+                "Legal review is still required. Confirm interpretations with Legal and the primary source.",
+                "Product names, units, costs, and dates are illustrative. They do not come from a specific company.",
+                "The prototype has no auth, PLM/BOM integration, or audit log. It is not a production workflow.",
+                "The data is a curated snapshot verified on 20 Nov 2026. It is not a live regulatory feed.",
               ].map((item) => (
                 <li key={item} className="flex gap-2">
                   <ShieldAlert size={12} className="mt-0.5 shrink-0 text-amber-600" />
@@ -134,20 +134,19 @@ export default function AboutPage() {
       <div className="mt-5 grid gap-5 lg:grid-cols-3">
         <Panel
           title="Why this shape"
-          description="A program workbench, not a sustainability dashboard."
+          description="A program workbench for compliance decisions."
           action={<Layers size={15} className="text-zinc-400" />}
         >
           <p className="text-[12px] leading-5 text-zinc-600">
-            Hardware teams rarely fail compliance because the law is unknown. They fail
-            because applicability is discovered after the enclosure, battery, or BOM is
-            frozen. The workbench is organized around that failure mode: product ×
-            market × time × evidence, pinned to NPI gates and owners.
+            Hardware teams often discover regulatory applicability after the enclosure,
+            battery, or BOM is frozen. This workbench is built around that problem:
+            product, market, time, and evidence, tied to NPI gates and owners.
           </p>
         </Panel>
 
         <Panel
           title="How it is built"
-          description="Static-first, testable, and deliberately deterministic."
+          description="Static-first and testable."
           action={<GitBranch size={15} className="text-zinc-400" />}
         >
           <p className="text-[12px] leading-5 text-zinc-600">
@@ -165,13 +164,14 @@ export default function AboutPage() {
         <Panel
           title="Who built it"
           description="Product sustainability, LCA, and compliance strategy."
-          action={<Sparkles size={15} className="text-zinc-400" />}
+          action={<User size={15} className="text-zinc-400" />}
         >
           <p className="text-[12px] leading-5 text-zinc-600">
             Built by Raka Adrianto as a portfolio artifact for product environmental
-            compliance strategy roles. The project draws on a PhD and LCA background and
-            an interest in the program-management side of sustainability: the decisions,
-            owners, gates, and evidence that turn a policy into a shipped product.
+            compliance strategy roles at electronics and hardware companies. The project
+            draws on a PhD and LCA background and an interest in the program management
+            side of sustainability: the decisions, owners, gates, and evidence that turn a
+            policy into a shipped product.
           </p>
           <a
             href="https://raka-adrianto.com"
@@ -190,9 +190,9 @@ export default function AboutPage() {
           <div className="flex items-start gap-2">
             <FileText size={14} className="mt-0.5 shrink-0 text-zinc-500" />
             <p className="text-[12px] leading-5 text-zinc-600">
-              The source code and README will be published on GitHub. The live demo is
-              designed for a Vercel deployment; the app is a static export, so it can run
-              locally or on any static host.
+              The source code and README are on GitHub. The live demo is designed for a
+              Vercel deployment. The app is a static export, so it runs locally or on any
+              static host.
             </p>
           </div>
           <Link

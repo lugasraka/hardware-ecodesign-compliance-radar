@@ -90,7 +90,7 @@ export function EvidenceSummary({
             description={
               showReady
                 ? undefined
-                : "Every applicable clause has sufficient evidence on file. Use “Show ready” to see the full list."
+                : 'Every applicable clause has sufficient evidence on file. Use "Show ready" to see the full list.'
             }
           />
         </div>

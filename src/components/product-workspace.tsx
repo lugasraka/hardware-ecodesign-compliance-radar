@@ -159,9 +159,9 @@ export function ProductWorkspace({
     summary.blockers > 0
       ? `${summary.blockers} market-access ${
           summary.blockers === 1 ? "finding needs" : "findings need"
-        } attention. The binding issue is “${
+        } attention. The binding issue is "${
           primaryClause?.title ?? "an unresolved requirement"
-        }”.`
+        }".`
       : summary.atRisk > 0
         ? `No market-access blockers. ${summary.atRisk} findings still need evidence or a decision.`
         : "No open blockers. Keep monitoring the regulatory pipeline.";
@@ -306,7 +306,7 @@ export function ProductWorkspace({
         <KpiCard
           label="Revenue exposed"
           value={formatUsd(summary.exposureUsd.base)}
-          detail={`${formatUsd(summary.exposureUsd.low)} – ${formatUsd(summary.exposureUsd.high)}`}
+          detail={`${formatUsd(summary.exposureUsd.low)} to ${formatUsd(summary.exposureUsd.high)}`}
           tone="danger"
         />
       </div>
@@ -350,9 +350,9 @@ export function ProductWorkspace({
                 </p>
               ) : null}
               <p className="mt-3 text-[13px] leading-5 text-zinc-500">
-                The assessment keeps applicability, technical conformity, evidence, and
-                program timing separate. Open a finding to see the exact reason and the
-                legal source.
+                The assessment keeps four things separate: applicability, conformity,
+                evidence, and timing. Open a finding to see the reason and the legal
+                source.
               </p>
             </Panel>
 
@@ -524,7 +524,7 @@ export function ProductWorkspace({
       {tab === "requirements" ? (
         <Panel
           title="Requirement ledger"
-          description="Default view shows blockers and at-risk items. Open a row for the legal source and predicate trace."
+          description="Default view shows blockers and at-risk items. Open a row for the legal source and predicate trace. Attributed revenue is per clause; the product roll-up de-duplicates across clauses."
           action={
             <span className="font-mono text-[12px] text-zinc-500">
               {summary.assessments.length} assessments

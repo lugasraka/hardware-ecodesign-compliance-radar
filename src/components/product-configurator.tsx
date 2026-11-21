@@ -265,8 +265,8 @@ export function ProductConfigurator({
 
           <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2">
             <p className="text-[12px] leading-4 text-amber-900">
-              The one-page executive brief uses the curated product, not this what-if
-              scenario. Use the brief for the final recommendation.
+              The executive brief uses the curated product. This panel is for what-if
+              exploration; use the brief for the final recommendation.
             </p>
           </div>
         </div>

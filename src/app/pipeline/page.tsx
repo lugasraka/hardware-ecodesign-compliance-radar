@@ -78,7 +78,7 @@ export default function PipelinePage() {
       <PageHeader
         eyebrow="Regulatory strategy · influence layer"
         title="Regulatory pipeline and advocacy"
-        description="A compliance tracker stops at the enforcement date. This view starts earlier: consultations, delegated acts, standards, scrutiny periods, and the positions the program intends to take."
+        description="A compliance tracker stops at the enforcement date. This view starts earlier: consultations, delegated acts, standards, and the positions the program plans to take."
         actions={
           <Link
             href="/methodology/#sources"
@@ -94,7 +94,7 @@ export default function PipelinePage() {
         <KpiCard
           label="Upcoming milestones"
           value={upcoming.length}
-          detail="next 24–36 months"
+          detail="next 24 to 36 months"
           tone="info"
         />
         <KpiCard
@@ -234,7 +234,7 @@ export default function PipelinePage() {
 
           <Panel
             title="Why this matters"
-            description="The EPM role is explicitly about influence, not passive tracking."
+            description="The EPM role includes shaping the rule."
           >
             <div className="space-y-3">
               {[
@@ -245,13 +245,13 @@ export default function PipelinePage() {
                 },
                 {
                   icon: Radio,
-                  title: "Standards are a second rulebook",
-                  body: "CEN-CLC/JTC 24 and IEC TC 111 decisions determine what 'conforming' looks like in practice. Tracking them is a program deliverable.",
+                  title: "Standards define conformity in practice",
+                  body: "CEN-CLC/JTC 24 and IEC TC 111 decisions determine what conforming looks like. Tracking them is a program deliverable.",
                 },
                 {
                   icon: MessageSquareText,
-                  title: "Positions need evidence and allies",
-                  body: "A credible position pairs product data, legal analysis, and industry alignment. A generic comment letter is not a strategy.",
+                  title: "A position needs evidence and allies",
+                  body: "A credible position pairs product data, legal analysis, and industry alignment. A generic comment letter rarely changes the outcome.",
                 },
               ].map((item) => {
                 const Icon = item.icon;

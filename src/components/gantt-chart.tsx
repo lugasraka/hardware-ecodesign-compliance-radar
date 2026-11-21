@@ -134,7 +134,7 @@ export function GanttChart({
       description={`${workstreams.length} critical workstreams · ${lateCount} late · ${actNowCount} act now. Bars run from the required-by date to the lock-in gate.`}
       action={
         <span className="font-mono text-[12px] text-zinc-500">
-          {formatDate(start)} — {formatDate(end)}
+          {formatDate(start)} to {formatDate(end)}
         </span>
       }
       bodyClassName="p-0"

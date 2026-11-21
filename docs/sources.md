@@ -8,13 +8,13 @@ This is a curated snapshot for a portfolio prototype, not a live regulatory feed
 
 | Instrument | Jurisdiction | Applies from | Source | Confidence |
 |---|---|---|---|---|
-| Regulation (EU) 2023/1670 — smartphones, mobile phones, cordless phones, slate tablets | EU | 20 Jun 2025 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2023/1670/oj/eng) | High |
-| Regulation (EU) 2023/1542 — Batteries Regulation | EU | 18 Feb 2027 (Art. 11, Art. 77) | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng) | High |
-| Regulation (EU) 2025/2052 — external power supplies, wireless chargers, USB-C cables | EU | 14 Dec 2028; transitions to 2030 and 2033 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2025/2052/oj/eng) | High |
-| Delegated Regulation (EU) 2023/1669 — smartphone/tablet energy labelling | EU | 20 Jun 2025 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg_del/2023/1669/oj/eng) | High |
-| Regulation (EU) 2024/1781 — ESPR and Digital Product Passport | EU | Registry operational 20 Jul 2026; product acts delegated | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng) | High |
-| Regulation (EU) 2019/2021 — electronic displays | EU | 1 Mar 2021 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2019/2021/oj/eng) | High |
-| Regulation (EU) 617/2013 — computers and computer servers | EU | 1 Jul 2013 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2013/617/oj/eng) | High |
+| Regulation (EU) 2023/1670: smartphones, mobile phones, cordless phones, slate tablets | EU | 20 Jun 2025 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2023/1670/oj/eng) | High |
+| Regulation (EU) 2023/1542: Batteries Regulation | EU | 18 Feb 2027 (Art. 11, Art. 77) | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng) | High |
+| Regulation (EU) 2025/2052: external power supplies, wireless chargers, USB-C cables | EU | 14 Dec 2028; transitions to 2030 and 2033 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2025/2052/oj/eng) | High |
+| Delegated Regulation (EU) 2023/1669: smartphone/tablet energy labelling | EU | 20 Jun 2025 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg_del/2023/1669/oj/eng) | High |
+| Regulation (EU) 2024/1781: ESPR and Digital Product Passport | EU | Registry operational 20 Jul 2026; product acts delegated | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng) | High |
+| Regulation (EU) 2019/2021: electronic displays | EU | 1 Mar 2021 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2019/2021/oj/eng) | High |
+| Regulation (EU) 617/2013: computers and computer servers | EU | 1 Jul 2013 | [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2013/617/oj/eng) | High |
 | French repairability index | France | 1 Jan 2021 | [Service-Public Entreprendre](https://entreprendre.service-public.gouv.fr/vosdroits/F38092) | High |
 | California Right to Repair Act (SB 244) | US-CA | 1 Jul 2024 | [California Legislature](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB244) | High |
 | Oregon right-to-repair law (SB 1596) | US-OR | 1 Jan 2025 | [Oregon Legislature](https://olis.oregonlegislature.gov/liz/2024R1/Downloads/MeasureDocument/SB1596) | Medium |
@@ -26,12 +26,12 @@ This is a curated snapshot for a portfolio prototype, not a live regulatory feed
 
 ### Battery Passport
 
-Article 77(1) of Regulation (EU) 2023/1542 requires a battery passport for each LMT battery, each industrial battery above 2 kWh, and each EV battery placed on the market or put into service from 18 February 2027. Portable batteries — phones, laptops, earbuds — are outside Article 77. A smartphone should not be modeled as requiring a battery passport.
+Article 77(1) of Regulation (EU) 2023/1542 requires a battery passport for each LMT battery, each industrial battery above 2 kWh, and each EV battery placed on the market or put into service from 18 February 2027. Portable batteries such as phones, laptops, and earbuds are outside Article 77. A smartphone should not be modeled as requiring a battery passport.
 
 Supporting sources:
 
-- [European Commission — Guidance to support preparations for the Digital Batteries Passport](https://single-market-economy.ec.europa.eu/news/guidance-support-preparations-digital-batteries-passport-2026-08-21_en)
-- [European Commission — Digital Product Passport FAQ for Batteries](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/eu-digital-product-passport-faq-batteries_en)
+- [European Commission: Guidance to support preparations for the Digital Batteries Passport](https://single-market-economy.ec.europa.eu/news/guidance-support-preparations-digital-batteries-passport-2026-08-21_en)
+- [European Commission: Digital Product Passport FAQ for Batteries](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/eu-digital-product-passport-faq-batteries_en)
 
 ### Article 11 derogations
 
@@ -44,12 +44,12 @@ Supporting sources:
 
 ### EU repairability class vs French index
 
-Delegated Regulation (EU) 2023/1669 establishes the repairability class A–E for smartphones and slate tablets. The French national repairability index remains a separate instrument and still applies to laptops and other categories. For smartphones, the EU energy label has replaced the French index. Directive (EU) 2024/825 requires a “reparability score” where applicable from 27 September 2026, but only the EU harmonised score qualifies.
+Delegated Regulation (EU) 2023/1669 establishes the repairability class A to E for smartphones and slate tablets. The French national repairability index remains a separate instrument and still applies to laptops and other categories. For smartphones, the EU energy label has replaced the French index. Directive (EU) 2024/825 requires a "reparability score" where applicable from 27 September 2026, but only the EU harmonised score qualifies.
 
 Supporting sources:
 
 - [Delegated Regulation (EU) 2023/1669](https://eur-lex.europa.eu/eli/reg_del/2023/1669/oj/eng)
-- [French Service-Public — indices de durabilité et de réparabilité](https://entreprendre.service-public.gouv.fr/vosdroits/F38092)
+- [French Service-Public: indices de durabilité et de réparabilité](https://entreprendre.service-public.gouv.fr/vosdroits/F38092)
 
 ### ESPR DPP timeline
 
@@ -57,8 +57,8 @@ The DPP Registry became operational on 20 July 2026. Six DPP standards were cite
 
 Supporting sources:
 
-- [European Commission — Digital Product Passport](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en)
-- [European Commission — DPP Registry is now live](https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en)
+- [European Commission: Digital Product Passport](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en)
+- [European Commission: DPP Registry is now live](https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en)
 - [Commission Implementing Regulation (EU) 2026/1778](https://eur-lex.europa.eu/eli/reg_impl/2026/1778/oj/eng)
 
 ### EU 2025/2052 dates
