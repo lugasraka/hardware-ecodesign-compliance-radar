@@ -53,7 +53,7 @@ Regulatory data is a curated snapshot. A weekly source check watches the officia
 
 ## Deploy
 
-The app is live at https://hardware-ecodesign-compliance-radar.vercel.app/. The repo is connected to Vercel. For a new environment, import the repo into Vercel. Use the Next.js preset, build with `npm run build`, and output `out`. No environment variables are required.
+The app is live at https://hardware-ecodesign-compliance-radar.vercel.app/. The Vercel project is connected to this repo. Pushes to `main` trigger a production deployment, and pull requests get preview deployments. For a new environment, import the repo into Vercel. Use the Next.js preset, build with `npm run build`, and output `out`. No environment variables are required.
 
 ## Documentation
 
