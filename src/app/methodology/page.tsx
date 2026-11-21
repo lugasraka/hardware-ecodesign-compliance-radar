@@ -17,9 +17,6 @@ import { formatDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
 import { FreshnessBadge } from "@/components/freshness-badge";
 
-const RUNBOOK_URL =
-  "https://github.com/lugasraka/hardware-ecodesign-compliance-radar/blob/main/docs/regulatory-update-runbook.md";
-
 const SECTIONS = [
   { id: "thesis", label: "Four things to keep separate" },
   { id: "engine", label: "How the engine works" },
@@ -124,15 +121,12 @@ export default function MethodologyPage() {
           >
             Changelog
           </Link>
-          <a
-            href={RUNBOOK_URL}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/changelog/#review-checklist"
             className="inline-flex items-center gap-1 text-[11px] font-medium text-zinc-500 hover:text-blue-700"
           >
-            Update runbook
-            <ArrowUpRight size={10} />
-          </a>
+            Review checklist
+          </Link>
         </div>
       </div>
 

@@ -62,7 +62,7 @@ for (const [name, path] of [
   ["methodology", "/methodology/"],
 ]) {
   if (name === "changelog") {
-    await desktop.setViewportSize({ width: 1440, height: 1900 });
+    await desktop.setViewportSize({ width: 1440, height: 2200 });
   }
   await desktop.goto(`${base}${path}`, { waitUntil: "networkidle" });
   await desktop.screenshot({ path: `${outDir}/${name}.png` });

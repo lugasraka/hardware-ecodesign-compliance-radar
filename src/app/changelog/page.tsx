@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
-  ArrowUpRight,
   CheckCircle2,
   GitPullRequest,
   Search,
@@ -27,9 +26,6 @@ export const metadata: Metadata = {
   title: "Regulatory data changelog",
 };
 
-const RUNBOOK_URL =
-  "https://github.com/lugasraka/hardware-ecodesign-compliance-radar/blob/main/docs/regulatory-update-runbook.md";
-
 const UPDATE_STEPS = [
   {
     icon: Search,
@@ -53,6 +49,15 @@ const UPDATE_STEPS = [
   },
 ];
 
+const REVIEW_CHECKLIST = [
+  "Open the official source for each candidate.",
+  "Classify the change: no substantive change, clarification, amendment, new instrument, or repeal.",
+  "Update the clause text, applicability, conformity, exemptions, evidence, source URL, and last-verified date.",
+  "Update the instrument if the application date, status, or source changed.",
+  "Add a changelog entry with the version, date, changes, and reviewer.",
+  "Run npm run check. Merge only after tests and data validation pass.",
+];
+
 export default function ChangelogPage() {
   const latestRelease = dataReleases[0];
   const openWatchItems = regulatoryWatch.filter(
@@ -67,13 +72,10 @@ export default function ChangelogPage() {
         description="The dataset is a curated snapshot. This page records reviewed releases and candidate changes that are still waiting for a decision."
         actions={
           <a
-            href={RUNBOOK_URL}
-            target="_blank"
-            rel="noreferrer"
+            href="#review-checklist"
             className="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 py-2 text-[12px] font-medium text-zinc-700 hover:border-zinc-400"
           >
-            Update runbook
-            <ArrowUpRight size={14} />
+            Review checklist
           </a>
         }
       />
@@ -128,6 +130,28 @@ export default function ChangelogPage() {
               </div>
             );
           })}
+        </div>
+
+        <div
+          id="review-checklist"
+          className="mt-3 scroll-mt-24 rounded-md border border-zinc-200 bg-white px-3 py-2.5"
+        >
+          <p className="text-[11px] font-semibold text-zinc-900">
+            Review checklist
+          </p>
+          <ol className="mt-1.5 space-y-1">
+            {REVIEW_CHECKLIST.map((item, index) => (
+              <li
+                key={item}
+                className="flex gap-2 text-[11px] leading-5 text-zinc-600"
+              >
+                <span className="font-mono text-[10px] text-zinc-400">
+                  {index + 1}.
+                </span>
+                {item}
+              </li>
+            ))}
+          </ol>
         </div>
       </Panel>
 
