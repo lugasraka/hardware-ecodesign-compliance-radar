@@ -139,15 +139,9 @@ export default function ChangelogPage() {
           <p className="text-[11px] font-semibold text-zinc-900">
             Review checklist
           </p>
-          <ol className="mt-1.5 space-y-1">
-            {REVIEW_CHECKLIST.map((item, index) => (
-              <li
-                key={item}
-                className="flex gap-2 text-[11px] leading-5 text-zinc-600"
-              >
-                <span className="font-mono text-[10px] text-zinc-400">
-                  {index + 1}.
-                </span>
+          <ol className="mt-1.5 list-decimal space-y-1 pl-4 text-[11px] leading-5 text-zinc-600 marker:text-[10px] marker:text-zinc-400">
+            {REVIEW_CHECKLIST.map((item) => (
+              <li key={item} className="pl-1">
                 {item}
               </li>
             ))}
