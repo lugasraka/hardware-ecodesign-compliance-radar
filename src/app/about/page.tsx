@@ -61,7 +61,7 @@ export default function AboutPage() {
         actions={
           <Link
             href="/products/phone-orbit-2028/"
-            className="inline-flex items-center gap-1.5 rounded-md bg-blue-700 px-3 py-2 text-[12px] font-medium text-white hover:bg-blue-800"
+            className="inline-flex items-center gap-1.5 rounded-md bg-blue-700 px-3 py-2 text-[13px] font-medium text-white hover:bg-blue-800"
           >
             Start the demo
             <ArrowRight size={14} />
@@ -77,15 +77,15 @@ export default function AboutPage() {
           <ol className="space-y-3">
             {DEMO_STEPS.map((step, index) => (
               <li key={step.title} className="flex gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 font-mono text-[10px] font-medium text-zinc-600">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 font-mono text-[12px] font-medium text-zinc-600">
                   {index + 1}
                 </span>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold text-zinc-900">{step.title}</p>
-                  <p className="mt-0.5 text-[10px] leading-4 text-zinc-500">{step.body}</p>
+                  <p className="text-[13px] font-semibold text-zinc-900">{step.title}</p>
+                  <p className="mt-0.5 text-[12px] leading-4 text-zinc-500">{step.body}</p>
                   <Link
                     href={step.href}
-                    className="mt-1 inline-flex items-center gap-1 text-[9px] font-medium text-blue-700 hover:text-blue-800"
+                    className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-blue-700 hover:text-blue-800"
                   >
                     {step.label}
                     <ArrowRight size={10} />
@@ -107,7 +107,7 @@ export default function AboutPage() {
               ].map((item) => (
                 <li key={item} className="flex gap-2">
                   <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-600" />
-                  <span className="text-[10px] leading-4 text-zinc-600">{item}</span>
+                  <span className="text-[12px] leading-4 text-zinc-600">{item}</span>
                 </li>
               ))}
             </ul>
@@ -123,7 +123,7 @@ export default function AboutPage() {
               ].map((item) => (
                 <li key={item} className="flex gap-2">
                   <ShieldAlert size={12} className="mt-0.5 shrink-0 text-amber-600" />
-                  <span className="text-[10px] leading-4 text-zinc-600">{item}</span>
+                  <span className="text-[12px] leading-4 text-zinc-600">{item}</span>
                 </li>
               ))}
             </ul>
@@ -137,7 +137,7 @@ export default function AboutPage() {
           description="A program workbench, not a sustainability dashboard."
           action={<Layers size={15} className="text-zinc-400" />}
         >
-          <p className="text-[10px] leading-5 text-zinc-600">
+          <p className="text-[12px] leading-5 text-zinc-600">
             Hardware teams rarely fail compliance because the law is unknown. They fail
             because applicability is discovered after the enclosure, battery, or BOM is
             frozen. The workbench is organized around that failure mode: product ×
@@ -150,13 +150,13 @@ export default function AboutPage() {
           description="Static-first, testable, and deliberately deterministic."
           action={<GitBranch size={15} className="text-zinc-400" />}
         >
-          <p className="text-[10px] leading-5 text-zinc-600">
+          <p className="text-[12px] leading-5 text-zinc-600">
             Next.js App Router, TypeScript, Tailwind CSS, and a static export. The domain
             layer is pure TypeScript: typed predicates, tri-state evaluation, schedule
             math, repairability scoring, and brief generation. No database, no API keys,
             no LLM in the compliance path.
           </p>
-          <p className="mt-2 text-[9px] text-zinc-500">
+          <p className="mt-2 text-[11px] text-zinc-500">
             Data validation fails the build if a clause lacks a source, owner, gate, or
             evidence requirement.
           </p>
@@ -167,7 +167,7 @@ export default function AboutPage() {
           description="Product sustainability, LCA, and compliance strategy."
           action={<Sparkles size={15} className="text-zinc-400" />}
         >
-          <p className="text-[10px] leading-5 text-zinc-600">
+          <p className="text-[12px] leading-5 text-zinc-600">
             Built by Raka Adrianto as a portfolio artifact for product environmental
             compliance strategy roles. The project draws on a PhD and LCA background and
             an interest in the program-management side of sustainability: the decisions,
@@ -177,7 +177,7 @@ export default function AboutPage() {
             href="https://raka-adrianto.com"
             target="_blank"
             rel="noreferrer"
-            className="mt-2 inline-flex items-center gap-1 text-[9px] font-medium text-blue-700 hover:text-blue-800"
+            className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-blue-700 hover:text-blue-800"
           >
             raka-adrianto.com
             <ExternalLink size={9} />
@@ -189,7 +189,7 @@ export default function AboutPage() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-2">
             <FileText size={14} className="mt-0.5 shrink-0 text-zinc-500" />
-            <p className="text-[10px] leading-5 text-zinc-600">
+            <p className="text-[12px] leading-5 text-zinc-600">
               The source code and README will be published on GitHub. The live demo is
               designed for a Vercel deployment; the app is a static export, so it can run
               locally or on any static host.
@@ -197,7 +197,7 @@ export default function AboutPage() {
           </div>
           <Link
             href="/methodology/#sources"
-            className="inline-flex shrink-0 items-center gap-1 text-[10px] font-medium text-blue-700 hover:text-blue-800"
+            className="inline-flex shrink-0 items-center gap-1 text-[12px] font-medium text-blue-700 hover:text-blue-800"
           >
             Data sources
             <ArrowUpRight size={11} />

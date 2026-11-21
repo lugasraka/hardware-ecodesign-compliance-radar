@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { Assessment, Clause } from "@/domain/types";
 import { formatDate } from "@/lib/date";
 import { titleCase, unique } from "@/lib/utils";
@@ -10,6 +13,7 @@ export function EvidenceSummary({
   assessments: Assessment[];
   clauses: Clause[];
 }) {
+  const [showReady, setShowReady] = useState(false);
   const clauseById = new Map(clauses.map((clause) => [clause.id, clause]));
   const applicable = assessments.filter(
     (assessment) => assessment.overall !== "not_applicable",
@@ -37,6 +41,9 @@ export function EvidenceSummary({
   const sorted = [...rows].sort(
     (a, b) => statusOrder[a.assessment.evidence] - statusOrder[b.assessment.evidence],
   );
+  const displayed = showReady
+    ? sorted
+    : sorted.filter((row) => row.assessment.evidence !== "sufficient");
 
   const owners = unique(rows.map((row) => row.requirement.owner));
 
@@ -45,9 +52,18 @@ export function EvidenceSummary({
       title="Evidence and certification readiness"
       description="A technical pass without an auditable artifact is still a market-access risk. This view rolls up the evidence requirements attached to each applicable clause."
       action={
-        <span className="font-mono text-[10px] text-zinc-500">
-          {owners.length} owning teams
-        </span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-mono text-[12px] text-zinc-500">
+            {owners.length} owning teams
+          </span>
+          <button
+            type="button"
+            onClick={() => setShowReady((current) => !current)}
+            className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-[12px] font-medium text-zinc-600 hover:border-zinc-400"
+          >
+            {showReady ? "Show gaps only" : `Show ready (${counts.sufficient})`}
+          </button>
+        </div>
       }
       bodyClassName="p-0"
     >
@@ -67,9 +83,16 @@ export function EvidenceSummary({
         ))}
       </div>
 
-      {sorted.length === 0 ? (
+      {displayed.length === 0 ? (
         <div className="p-4">
-          <EmptyState title="No evidence requirements" />
+          <EmptyState
+            title={showReady ? "No evidence requirements" : "No open evidence gaps"}
+            description={
+              showReady
+                ? undefined
+                : "Every applicable clause has sufficient evidence on file. Use “Show ready” to see the full list."
+            }
+          />
         </div>
       ) : (
         <div className="max-h-[520px] overflow-auto">
@@ -80,7 +103,7 @@ export function EvidenceSummary({
                   (header) => (
                     <th
                       key={header}
-                      className="px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
+                      className="px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
                     >
                       {header}
                     </th>
@@ -89,29 +112,29 @@ export function EvidenceSummary({
               </tr>
             </thead>
             <tbody>
-              {sorted.map((row) => (
+              {displayed.map((row) => (
                 <tr key={row.key} className="border-b border-zinc-100 last:border-0">
                   <td className="max-w-[230px] px-3 py-2">
-                    <p className="text-[10px] font-medium leading-4 text-zinc-800">
+                    <p className="text-[12px] font-medium leading-4 text-zinc-800">
                       {row.clause.title}
                     </p>
-                    <p className="mt-0.5 font-mono text-[9px] text-zinc-400">
+                    <p className="mt-0.5 font-mono text-[11px] text-zinc-400">
                       {row.assessment.market} · {row.clause.articleRef}
                     </p>
                   </td>
-                  <td className="px-3 py-2 text-[10px] text-zinc-600">
+                  <td className="px-3 py-2 text-[12px] text-zinc-600">
                     {row.requirement.label}
                   </td>
-                  <td className="px-3 py-2 text-[9px] text-zinc-500">
+                  <td className="px-3 py-2 text-[11px] text-zinc-500">
                     {titleCase(row.requirement.type)}
                   </td>
-                  <td className="px-3 py-2 text-[9px] text-zinc-600">
+                  <td className="px-3 py-2 text-[11px] text-zinc-600">
                     {row.requirement.owner}
                   </td>
                   <td className="px-3 py-2">
                     <EvidencePill status={row.assessment.evidence} />
                   </td>
-                  <td className="px-3 py-2 font-mono text-[9px] text-zinc-500">
+                  <td className="px-3 py-2 font-mono text-[11px] text-zinc-500">
                     {row.requirement.expiresOn
                       ? formatDate(row.requirement.expiresOn)
                       : "—"}

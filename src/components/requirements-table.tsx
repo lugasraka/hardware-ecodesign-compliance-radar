@@ -34,7 +34,10 @@ interface Row {
   instrument: Instrument;
 }
 
-const STATUS_OPTIONS: { value: OverallStatus | "all"; label: string }[] = [
+type StatusFilter = OverallStatus | "all" | "actionable";
+
+const STATUS_OPTIONS: { value: StatusFilter; label: string }[] = [
+  { value: "actionable", label: "Actionable only" },
   { value: "all", label: "All statuses" },
   { value: "non_compliant", label: "Non-compliant" },
   { value: "at_risk", label: "At risk" },
@@ -59,11 +62,15 @@ export function RequirementsTable({
   clauses,
   instruments,
   markets,
+  defaultStatus = "all",
+  initialClauseId,
 }: {
   assessments: Assessment[];
   clauses: Clause[];
   instruments: Instrument[];
   markets: MarketCode[];
+  defaultStatus?: "actionable" | "all";
+  initialClauseId?: string;
 }) {
   const clauseById = useMemo(
     () => new Map(clauses.map((clause) => [clause.id, clause])),
@@ -87,11 +94,18 @@ export function RequirementsTable({
   );
 
   const initial =
+    (initialClauseId
+      ? rows.find(
+          (row) =>
+            row.clause.id === initialClauseId &&
+            row.assessment.overall !== "not_applicable",
+        )
+      : undefined) ??
     rows.find((row) => row.assessment.overall === "non_compliant") ??
     rows.find((row) => row.assessment.overall === "at_risk") ??
     rows[0];
 
-  const [status, setStatus] = useState<OverallStatus | "all">("all");
+  const [status, setStatus] = useState<StatusFilter>(defaultStatus);
   const [severity, setSeverity] = useState<Severity | "all">("all");
   const [market, setMarket] = useState<MarketCode | "all">("all");
   const [team, setTeam] = useState<string>("all");
@@ -108,7 +122,16 @@ export function RequirementsTable({
   const filtered = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     return rows.filter((row) => {
-      if (status !== "all" && row.assessment.overall !== status) return false;
+      if (status === "actionable") {
+        if (
+          row.assessment.overall !== "non_compliant" &&
+          row.assessment.overall !== "at_risk"
+        ) {
+          return false;
+        }
+      } else if (status !== "all" && row.assessment.overall !== status) {
+        return false;
+      }
       if (severity !== "all" && row.clause.severity !== severity) return false;
       if (market !== "all" && row.assessment.market !== market) return false;
       if (team !== "all" && !row.clause.owningTeams.includes(team as never)) return false;
@@ -153,13 +176,13 @@ export function RequirementsTable({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search clause, article, owner…"
-            className="h-8 w-full rounded-md border border-zinc-300 bg-white pl-7 pr-2 text-[11px] text-zinc-800 outline-none placeholder:text-zinc-400 focus:border-blue-500"
+            className="h-8 w-full rounded-md border border-zinc-300 bg-white pl-7 pr-2 text-[13px] text-zinc-800 outline-none placeholder:text-zinc-400 focus:border-blue-500"
           />
         </div>
         <select
           value={status}
-          onChange={(event) => setStatus(event.target.value as OverallStatus | "all")}
-          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[11px] text-zinc-700 outline-none focus:border-blue-500"
+          onChange={(event) => setStatus(event.target.value as StatusFilter)}
+          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[13px] text-zinc-700 outline-none focus:border-blue-500"
         >
           {STATUS_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -170,7 +193,7 @@ export function RequirementsTable({
         <select
           value={severity}
           onChange={(event) => setSeverity(event.target.value as Severity | "all")}
-          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[11px] text-zinc-700 outline-none focus:border-blue-500"
+          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[13px] text-zinc-700 outline-none focus:border-blue-500"
         >
           {SEVERITY_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -181,7 +204,7 @@ export function RequirementsTable({
         <select
           value={market}
           onChange={(event) => setMarket(event.target.value as MarketCode | "all")}
-          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[11px] text-zinc-700 outline-none focus:border-blue-500"
+          className="h-8 rounded-md border border-zinc-300 bg-white px-2 text-[13px] text-zinc-700 outline-none focus:border-blue-500"
         >
           <option value="all">All markets</option>
           {markets.map((marketCode) => (
@@ -193,7 +216,7 @@ export function RequirementsTable({
         <select
           value={team}
           onChange={(event) => setTeam(event.target.value)}
-          className="h-8 max-w-[210px] rounded-md border border-zinc-300 bg-white px-2 text-[11px] text-zinc-700 outline-none focus:border-blue-500"
+          className="h-8 max-w-[210px] rounded-md border border-zinc-300 bg-white px-2 text-[13px] text-zinc-700 outline-none focus:border-blue-500"
         >
           <option value="all">All owners</option>
           {teams.map((teamName) => (
@@ -212,13 +235,22 @@ export function RequirementsTable({
               setTeam("all");
               setQuery("");
             }}
-            className="inline-flex h-8 items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 text-[10px] font-medium text-zinc-600 hover:border-zinc-400"
+            className="inline-flex h-8 items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 text-[12px] font-medium text-zinc-600 hover:border-zinc-400"
           >
             <FilterX size={12} />
             Reset
           </button>
         ) : null}
-        <span className="font-mono text-[10px] text-zinc-500 tabular">
+        {status !== "all" ? (
+          <button
+            type="button"
+            onClick={() => setStatus("all")}
+            className="h-8 rounded-md px-2 text-[12px] font-medium text-blue-700 hover:bg-blue-50 hover:text-blue-800"
+          >
+            Show all {rows.length}
+          </button>
+        ) : null}
+        <span className="font-mono text-[12px] text-zinc-500 tabular">
           {filtered.length}/{rows.length}
         </span>
       </div>
@@ -247,7 +279,7 @@ export function RequirementsTable({
                   ].map((header) => (
                     <th
                       key={header}
-                      className="px-2 py-2 text-[9px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
+                      className="px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
                     >
                       {header}
                     </th>
@@ -280,14 +312,14 @@ export function RequirementsTable({
                       )}
                     >
                       <td className="max-w-[260px] px-2 py-2.5">
-                        <p className="text-[11px] font-medium leading-4 text-zinc-900">
+                        <p className="text-[13px] font-medium leading-4 text-zinc-900">
                           {row.clause.title}
                         </p>
-                        <p className="mt-0.5 font-mono text-[9px] text-zinc-400">
+                        <p className="mt-0.5 font-mono text-[11px] text-zinc-400">
                           {row.clause.articleRef}
                         </p>
                       </td>
-                      <td className="px-2 py-2.5 text-[10px] text-zinc-600">
+                      <td className="px-2 py-2.5 text-[12px] text-zinc-600">
                         {row.instrument.shortId}
                       </td>
                       <td className="px-2 py-2.5">
@@ -302,23 +334,23 @@ export function RequirementsTable({
                       <td className="px-2 py-2.5">
                         <EvidencePill status={row.assessment.evidence} />
                       </td>
-                      <td className="max-w-[130px] px-2 py-2.5 text-[10px] leading-4 text-zinc-600">
+                      <td className="max-w-[130px] px-2 py-2.5 text-[12px] leading-4 text-zinc-600">
                         {row.clause.accountableTeam}
                       </td>
-                      <td className="px-2 py-2.5 font-mono text-[10px] text-zinc-600">
+                      <td className="px-2 py-2.5 font-mono text-[12px] text-zinc-600">
                         {row.clause.lockInGate}
                       </td>
                       <td className="px-2 py-2.5">
                         <span
                           className={cn(
-                            "font-mono text-[10px] tabular",
+                            "font-mono text-[12px] tabular",
                             late ? "font-semibold text-red-700" : "text-zinc-600",
                           )}
                         >
                           {formatDate(row.assessment.requiredBy)}
                         </span>
                       </td>
-                      <td className="px-2 py-2.5 text-right font-mono text-[10px] text-zinc-700 tabular">
+                      <td className="px-2 py-2.5 text-right font-mono text-[12px] text-zinc-700 tabular">
                         {row.assessment.exposureUsd.base > 0
                           ? formatUsd(row.assessment.exposureUsd.base)
                           : "—"}
@@ -334,7 +366,7 @@ export function RequirementsTable({
       <div className="mt-4">
         <div className="mb-2 flex items-center justify-between">
           <p className="label">Selected clause</p>
-          <p className="text-[10px] text-zinc-500">Click any row to inspect it</p>
+          <p className="text-[12px] text-zinc-500">Click any row to inspect it</p>
         </div>
         {selectedRow ? (
           <ClauseDetail row={selectedRow} />
@@ -363,7 +395,7 @@ function ClauseDetail({ row }: { row: Row }) {
       <div className="border-b border-zinc-100 px-4 py-3">
         <div className="flex items-center gap-1.5">
           <MarketBadge market={assessment.market} />
-          <span className="font-mono text-[9px] uppercase tracking-wide text-zinc-400">
+          <span className="font-mono text-[11px] uppercase tracking-wide text-zinc-400">
             {instrument.shortId} · {clause.articleRef}
           </span>
         </div>
@@ -380,13 +412,13 @@ function ClauseDetail({ row }: { row: Row }) {
 
       <div className="grid gap-5 px-4 py-4 lg:grid-cols-2">
         <div className="space-y-4">
-        <p className="text-[11px] leading-5 text-zinc-600">{clause.summary}</p>
+        <p className="text-[13px] leading-5 text-zinc-600">{clause.summary}</p>
 
         <div>
           <p className="label">Why this result</p>
           <ul className="mt-1.5 space-y-1">
             {assessment.reasons.map((reason) => (
-              <li key={reason} className="flex gap-1.5 text-[10px] leading-4 text-zinc-600">
+              <li key={reason} className="flex gap-1.5 text-[12px] leading-4 text-zinc-600">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400" />
                 {reason}
               </li>
@@ -394,26 +426,30 @@ function ClauseDetail({ row }: { row: Row }) {
           </ul>
         </div>
 
-        <div>
-          <p className="label">Predicate trace</p>
+        <details className="group">
+          <summary className="flex cursor-pointer list-none items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-zinc-500 hover:text-zinc-800">
+            Predicate trace
+            <span className="text-[11px] text-zinc-400 group-open:hidden">▸</span>
+            <span className="hidden text-[11px] text-zinc-400 group-open:inline">▾</span>
+          </summary>
           <div className="mt-1.5 rounded-md border border-zinc-200 bg-zinc-50/60 px-2.5 py-2">
             <TraceTree trace={assessment.trace} />
           </div>
-        </div>
+        </details>
         </div>
 
         <div className="space-y-4">
         {assessment.exemption ? (
           <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2.5">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+            <p className="text-[12px] font-semibold uppercase tracking-wide text-amber-800">
               Derogation path claimed
             </p>
-            <p className="mt-1 text-[11px] font-medium text-amber-950">
+            <p className="mt-1 text-[13px] font-medium text-amber-950">
               {assessment.exemption.label}
             </p>
             <ul className="mt-1.5 space-y-1">
               {assessment.exemption.evidence.map((item) => (
-                <li key={item} className="text-[10px] leading-4 text-amber-900">
+                <li key={item} className="text-[12px] leading-4 text-amber-900">
                   • {item}
                 </li>
               ))}
@@ -421,19 +457,23 @@ function ClauseDetail({ row }: { row: Row }) {
           </div>
         ) : null}
 
-        <div>
-          <p className="label">Legal text</p>
-          <blockquote className="mt-1.5 border-l-2 border-zinc-300 pl-2.5 text-[10px] leading-5 text-zinc-600">
+        <details className="group">
+          <summary className="flex cursor-pointer list-none items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-zinc-500 hover:text-zinc-800">
+            Legal source
+            <span className="text-[11px] text-zinc-400 group-open:hidden">▸</span>
+            <span className="hidden text-[11px] text-zinc-400 group-open:inline">▾</span>
+          </summary>
+          <blockquote className="mt-1.5 border-l-2 border-zinc-300 pl-2.5 text-[12px] leading-5 text-zinc-600">
             “{clause.legalText}”
           </blockquote>
-        </div>
+        </details>
 
         <div>
           <p className="label">Program interpretation</p>
-          <p className="mt-1.5 text-[10px] leading-5 text-zinc-600">
+          <p className="mt-1.5 text-[12px] leading-5 text-zinc-600">
             {clause.interpretation}
           </p>
-          <p className="mt-1.5 inline-flex items-center gap-1 rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[9px] text-zinc-500">
+          <p className="mt-1.5 inline-flex items-center gap-1 rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[11px] text-zinc-500">
             <Gavel size={10} />
             Interpretation: {titleCase(clause.interpretationStatus)}
           </p>
@@ -448,10 +488,10 @@ function ClauseDetail({ row }: { row: Row }) {
                 className="flex items-start justify-between gap-2 rounded border border-zinc-200 px-2 py-1.5"
               >
                 <div>
-                  <p className="text-[10px] font-medium leading-4 text-zinc-800">
+                  <p className="text-[12px] font-medium leading-4 text-zinc-800">
                     {requirement.label}
                   </p>
-                  <p className="text-[9px] text-zinc-500">
+                  <p className="text-[11px] text-zinc-500">
                     {titleCase(requirement.type)} · {requirement.owner}
                   </p>
                 </div>
@@ -464,25 +504,25 @@ function ClauseDetail({ row }: { row: Row }) {
         <div className="grid grid-cols-2 gap-2 border-t border-zinc-100 pt-3">
           <div>
             <p className="label">Accountable owner</p>
-            <p className="mt-1 text-[10px] leading-4 text-zinc-700">
+            <p className="mt-1 text-[12px] leading-4 text-zinc-700">
               {clause.accountableTeam}
             </p>
           </div>
           <div>
             <p className="label">Lock-in gate</p>
-            <p className="mt-1 font-mono text-[10px] text-zinc-700">
+            <p className="mt-1 font-mono text-[12px] text-zinc-700">
               {clause.lockInGate} · {formatDate(assessment.gateDate)}
             </p>
           </div>
           <div>
             <p className="label">Required by</p>
-            <p className={cn("mt-1 font-mono text-[10px] tabular", requiredByTone)}>
+            <p className={cn("mt-1 font-mono text-[12px] tabular", requiredByTone)}>
               {formatDate(assessment.requiredBy)}
             </p>
           </div>
           <div>
             <p className="label">Lead time</p>
-            <p className="mt-1 text-[10px] text-zinc-700">
+            <p className="mt-1 text-[12px] text-zinc-700">
               {clause.qualificationLeadWeeks} wk + {clause.decisionBufferWeeks} wk buffer
             </p>
           </div>
@@ -493,18 +533,18 @@ function ClauseDetail({ row }: { row: Row }) {
             href={clause.sourceUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-[10px] font-medium text-blue-700 hover:text-blue-800"
+            className="inline-flex items-center gap-1 text-[12px] font-medium text-blue-700 hover:text-blue-800"
           >
             Primary source
             <ExternalLink size={11} />
           </a>
-          <span className="text-[9px] text-zinc-400">
+          <span className="text-[11px] text-zinc-400">
             Verified {formatDate(clause.lastVerified)}
           </span>
         </div>
 
         <div className="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-2">
-          <p className="text-[9px] leading-4 text-zinc-500">
+          <p className="text-[11px] leading-4 text-zinc-500">
             {clause.notes ??
               "Illustrative assessment. Confirm the legal interpretation and evidence sufficiency with Legal and Environmental Affairs before a market-access decision."}
           </p>
@@ -512,7 +552,7 @@ function ClauseDetail({ row }: { row: Row }) {
             href={instrument.sourceUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-1 inline-flex items-center gap-1 text-[9px] font-medium text-zinc-600 hover:text-blue-700"
+            className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-zinc-600 hover:text-blue-700"
           >
             {instrument.shortId} official text
             <ArrowUpRight size={10} />

@@ -11,6 +11,7 @@ A portfolio-level compliance workbench for hardware NPI. It turns ecodesign, bat
 - Separates applicability, technical conformity, evidence, and program timing — so “unknown” and “evidence missing” stay visible.
 - Computes the EU smartphone/tablet repairability class from the official 2023/1669 formula.
 - Generates a print-ready one-page executive decision brief with a weighted options matrix.
+- Includes a three-minute guided tour and a live “customize this product” what-if panel.
 
 ## Hero scenario
 

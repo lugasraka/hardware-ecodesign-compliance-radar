@@ -35,19 +35,19 @@ export function DecisionList({
               <CalendarClock size={14} className="text-zinc-500" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[12px] font-medium leading-5 text-zinc-900 group-hover:text-blue-700">
+              <p className="text-[13px] font-medium leading-5 text-zinc-900 group-hover:text-blue-700">
                 {decision.title}
               </p>
-              <p className="mt-0.5 text-[10px] text-zinc-500">
+              <p className="mt-0.5 text-[12px] text-zinc-500">
                 {summary?.product.shortName ?? decision.productId} ·{" "}
                 {decision.owner} · needed by {formatDate(decision.decisionDate)}
               </p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="font-mono text-[11px] font-medium text-zinc-800 tabular">
+              <p className="font-mono text-[13px] font-medium text-zinc-800 tabular">
                 {summary ? formatUsd(summary.exposureUsd.base) : "—"}
               </p>
-              <p className="mt-0.5 text-[9px] uppercase tracking-wide text-zinc-400">
+              <p className="mt-0.5 text-[11px] uppercase tracking-wide text-zinc-400">
                 exposure
               </p>
             </div>

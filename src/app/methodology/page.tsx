@@ -27,14 +27,14 @@ function Section({
   return (
     <section id={id} className="scroll-mt-24 border-b border-zinc-200 py-6 first:pt-0 last:border-0">
       <h2 className="text-[16px] font-semibold tracking-tight text-zinc-950">{title}</h2>
-      <div className="mt-3 space-y-3 text-[12px] leading-6 text-zinc-600">{children}</div>
+      <div className="mt-3 space-y-3 text-[13px] leading-6 text-zinc-600">{children}</div>
     </section>
   );
 }
 
 function Code({ children }: { children: React.ReactNode }) {
   return (
-    <pre className="overflow-x-auto rounded-md border border-zinc-200 bg-zinc-50 p-3 font-mono text-[10px] leading-5 text-zinc-700">
+    <pre className="overflow-x-auto rounded-md border border-zinc-200 bg-zinc-50 p-3 font-mono text-[12px] leading-5 text-zinc-700">
       {children}
     </pre>
   );
@@ -58,7 +58,7 @@ export default function MethodologyPage() {
           what the law says, how we interpret it, whether we can prove it, and whether
           the program can still act on it. The separation is the design.
         </p>
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] text-zinc-500">
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-[12px] text-zinc-500">
           <span className="rounded-full border border-zinc-200 bg-white px-2 py-1">
             Data as of 20 Nov 2026
           </span>
@@ -79,7 +79,7 @@ export default function MethodologyPage() {
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="block rounded px-2 py-1 text-[11px] text-zinc-600 hover:bg-white hover:text-blue-700"
+                className="block rounded px-2 py-1 text-[13px] text-zinc-600 hover:bg-white hover:text-blue-700"
               >
                 {section.label}
               </a>
@@ -116,8 +116,8 @@ export default function MethodologyPage() {
                   key={item.title}
                   className="rounded-md border border-zinc-200 bg-white px-3 py-2.5"
                 >
-                  <p className="text-[11px] font-semibold text-zinc-900">{item.title}</p>
-                  <p className="mt-1 text-[10px] leading-5 text-zinc-500">{item.body}</p>
+                  <p className="text-[13px] font-semibold text-zinc-900">{item.title}</p>
+                  <p className="mt-1 text-[12px] leading-5 text-zinc-500">{item.body}</p>
                 </div>
               ))}
             </div>
@@ -132,9 +132,9 @@ export default function MethodologyPage() {
             <p>
               Regulatory applicability is a typed predicate tree, not a string, a
               regex, or an LLM prompt. The engine evaluates it with three-valued logic:
-              <span className="font-mono text-[11px] text-zinc-800"> true</span>,
-              <span className="font-mono text-[11px] text-zinc-800"> false</span>, or
-              <span className="font-mono text-[11px] text-zinc-800"> &quot;unknown&quot;</span>.
+              <span className="font-mono text-[13px] text-zinc-800"> true</span>,
+              <span className="font-mono text-[13px] text-zinc-800"> false</span>, or
+              <span className="font-mono text-[13px] text-zinc-800"> &quot;unknown&quot;</span>.
               Missing data never silently becomes “not applicable.”
             </p>
             <Code>{`type Predicate =
@@ -150,10 +150,10 @@ export default function MethodologyPage() {
               the final color.
             </p>
             <div className="rounded-md border border-blue-200 bg-blue-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+              <p className="text-[12px] font-semibold uppercase tracking-wide text-blue-700">
                 Why no LLM in the compliance path
               </p>
-              <p className="mt-1 text-[10px] leading-5 text-blue-900">
+              <p className="mt-1 text-[12px] leading-5 text-blue-900">
                 A language model is useful for drafting narrative once the facts are
                 structured. It is the wrong tool for a hard statutory date or a
                 threshold. The deterministic core is a deliberate design choice, not a
@@ -203,10 +203,10 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
               score are encoded in the scoring module and covered by golden tests.
             </p>
             <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2.5">
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-amber-700">
+              <p className="text-[12px] font-semibold uppercase tracking-wide text-amber-700">
                 EU score ≠ French index
               </p>
-              <p className="mt-1 text-[10px] leading-5 text-amber-900">
+              <p className="mt-1 text-[12px] leading-5 text-amber-900">
                 Smartphones and tablets use the EU energy label repairability class.
                 France’s national repairability index still applies to laptops and other
                 categories. The laptop score shown in this prototype is an explicitly
@@ -229,7 +229,7 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                     {["Topic", "Correction", "Why it matters"].map((header) => (
                       <th
                         key={header}
-                        className="px-2.5 py-2 text-[9px] font-semibold uppercase tracking-wide text-zinc-500"
+                        className="px-2.5 py-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500"
                       >
                         {header}
                       </th>
@@ -276,13 +276,13 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                     },
                   ].map((row) => (
                     <tr key={row.topic} className="border-b border-zinc-100 last:border-0">
-                      <td className="px-2.5 py-2 align-top text-[10px] font-medium text-zinc-800">
+                      <td className="px-2.5 py-2 align-top text-[12px] font-medium text-zinc-800">
                         {row.topic}
                       </td>
-                      <td className="px-2.5 py-2 align-top text-[10px] leading-5 text-zinc-600">
+                      <td className="px-2.5 py-2 align-top text-[12px] leading-5 text-zinc-600">
                         {row.correction}
                       </td>
-                      <td className="px-2.5 py-2 align-top text-[10px] leading-5 text-zinc-500">
+                      <td className="px-2.5 py-2 align-top text-[12px] leading-5 text-zinc-500">
                         {row.why}
                       </td>
                     </tr>
@@ -306,7 +306,7 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                       (header) => (
                         <th
                           key={header}
-                          className="px-2.5 py-2 text-[9px] font-semibold uppercase tracking-wide text-zinc-500"
+                          className="px-2.5 py-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500"
                         >
                           {header}
                         </th>
@@ -321,23 +321,23 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                       className="border-b border-zinc-100 last:border-0"
                     >
                       <td className="px-2.5 py-2 align-top">
-                        <p className="text-[10px] font-medium text-zinc-800">
+                        <p className="text-[12px] font-medium text-zinc-800">
                           {instrument.shortId}
                         </p>
-                        <p className="mt-0.5 max-w-[260px] text-[9px] leading-4 text-zinc-500">
+                        <p className="mt-0.5 max-w-[260px] text-[11px] leading-4 text-zinc-500">
                           {instrument.title}
                         </p>
                       </td>
-                      <td className="px-2.5 py-2 align-top font-mono text-[9px] text-zinc-600">
+                      <td className="px-2.5 py-2 align-top font-mono text-[11px] text-zinc-600">
                         {instrument.jurisdiction}
                       </td>
-                      <td className="px-2.5 py-2 align-top font-mono text-[9px] text-zinc-600">
+                      <td className="px-2.5 py-2 align-top font-mono text-[11px] text-zinc-600">
                         {formatDate(instrument.applicationDate)}
                       </td>
                       <td className="px-2.5 py-2 align-top">
                         <span
                           className={cn(
-                            "inline-flex rounded-full border px-1.5 py-0.5 text-[8px] font-medium capitalize",
+                            "inline-flex rounded-full border px-1.5 py-0.5 text-[10px] font-medium capitalize",
                             instrument.confidence === "high"
                               ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                               : instrument.confidence === "medium"
@@ -353,7 +353,7 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                           href={instrument.sourceUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 text-[9px] font-medium text-blue-700 hover:text-blue-800"
+                          className="inline-flex items-center gap-1 text-[11px] font-medium text-blue-700 hover:text-blue-800"
                         >
                           Official text
                           <ExternalLink size={9} />
@@ -364,7 +364,7 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                 </tbody>
               </table>
             </div>
-            <p className="text-[10px] text-zinc-500">
+            <p className="text-[12px] text-zinc-500">
               Last verified: {formatDate("2026-11-20")}. Sources include EUR-Lex,
               the European Commission, the French service-public portal, the California
               Legislature, the Oregon Legislature, the US eCFR, ENERGY STAR, and the CPCB.
@@ -388,7 +388,7 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                   className="flex gap-2 rounded border border-zinc-200 bg-white px-2.5 py-2"
                 >
                   <ShieldCheck size={12} className="mt-0.5 shrink-0 text-zinc-400" />
-                  <p className="text-[10px] leading-4 text-zinc-600">{item}</p>
+                  <p className="text-[12px] leading-4 text-zinc-600">{item}</p>
                 </div>
               ))}
             </div>
@@ -405,16 +405,16 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
                 "Add an optional, grounded drafting assistant for narrative polish, with citations and a mandatory human review step. Keep it out of the compliance path.",
               ].map((item, index) => (
                 <li key={item} className="flex gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white font-mono text-[9px] text-zinc-500">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white font-mono text-[11px] text-zinc-500">
                     {index + 1}
                   </span>
-                  <span className="text-[11px] leading-5 text-zinc-600">{item}</span>
+                  <span className="text-[13px] leading-5 text-zinc-600">{item}</span>
                 </li>
               ))}
             </ol>
             <div className="mt-4 flex items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 py-2">
               <Gavel size={14} className="shrink-0 text-zinc-400" />
-              <p className="text-[9px] leading-4 text-zinc-500">
+              <p className="text-[11px] leading-4 text-zinc-500">
                 The design rationale is deliberately explicit about what is not modeled.
                 A compliance tool that hides its assumptions is more dangerous than one
                 that shows them.
@@ -425,14 +425,14 @@ A ≥ 4.00 · B ≥ 3.35 · C ≥ 2.55 · D ≥ 1.75 · E ≥ 1.00`}</Code>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3">
             <div className="flex items-center gap-2">
               <BookOpen size={15} className="text-zinc-500" />
-              <p className="text-[10px] text-zinc-600">
+              <p className="text-[12px] text-zinc-600">
                 Want the short version? Follow the five-minute path on the portfolio
                 page.
               </p>
             </div>
             <Link
               href="/"
-              className="inline-flex items-center gap-1 text-[10px] font-medium text-blue-700 hover:text-blue-800"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-blue-700 hover:text-blue-800"
             >
               Back to portfolio
               <ArrowUpRight size={11} />

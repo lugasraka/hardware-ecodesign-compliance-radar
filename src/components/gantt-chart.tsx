@@ -133,7 +133,7 @@ export function GanttChart({
       title="Backward-scheduled NPI decision windows"
       description={`${workstreams.length} critical workstreams · ${lateCount} late · ${actNowCount} act now. Bars run from the required-by date to the lock-in gate.`}
       action={
-        <span className="font-mono text-[10px] text-zinc-500">
+        <span className="font-mono text-[12px] text-zinc-500">
           {formatDate(start)} — {formatDate(end)}
         </span>
       }
@@ -142,14 +142,14 @@ export function GanttChart({
       <div className="overflow-x-auto">
         <div className="min-w-[980px]">
           <div className="grid grid-cols-[230px_1fr] border-b border-zinc-200 bg-zinc-50/60">
-            <div className="px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.1em] text-zinc-500">
+            <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-zinc-500">
               Workstream
             </div>
             <div className="relative h-8">
               {ticks.map((tick) => (
                 <div
                   key={tick}
-                  className="absolute top-0 h-full border-l border-zinc-200 pl-1.5 pt-2 font-mono text-[9px] text-zinc-500"
+                  className="absolute top-0 h-full border-l border-zinc-200 pl-1.5 pt-2 font-mono text-[11px] text-zinc-500"
                   style={{ left: `${percentBetween(tick, start, end)}%` }}
                 >
                   {formatMonth(tick)}
@@ -172,10 +172,10 @@ export function GanttChart({
               >
                 <div className="flex items-center gap-2 px-3 py-1.5">
                   <span className="h-2 w-2 rotate-45 bg-zinc-700" />
-                  <span className="text-[10px] font-medium text-zinc-700">
+                  <span className="text-[12px] font-medium text-zinc-700">
                     {GATE_LABEL[gate]}
                   </span>
-                  <span className="ml-auto font-mono text-[9px] text-zinc-400">
+                  <span className="ml-auto font-mono text-[11px] text-zinc-400">
                     {formatDate(gateDates[gate])}
                   </span>
                 </div>
@@ -211,10 +211,10 @@ export function GanttChart({
                 className="grid grid-cols-[230px_1fr] border-b border-zinc-100"
               >
                 <div className="flex flex-col justify-center px-3 py-1.5">
-                  <span className="truncate text-[10px] font-medium text-zinc-800">
+                  <span className="truncate text-[12px] font-medium text-zinc-800">
                     {row.clause.title}
                   </span>
-                  <span className="mt-0.5 font-mono text-[9px] text-zinc-400">
+                  <span className="mt-0.5 font-mono text-[11px] text-zinc-400">
                     {row.assessment.market} · {row.clause.lockInGate} ·{" "}
                     {formatDate(row.assessment.requiredBy)}
                   </span>
@@ -264,10 +264,10 @@ export function GanttChart({
                 className="grid grid-cols-[230px_1fr] border-b border-zinc-100 bg-violet-50/30"
               >
                 <div className="flex flex-col justify-center px-3 py-1.5">
-                  <span className="truncate text-[10px] font-medium text-violet-900">
+                  <span className="truncate text-[12px] font-medium text-violet-900">
                     {milestone.title}
                   </span>
-                  <span className="mt-0.5 font-mono text-[9px] text-violet-500">
+                  <span className="mt-0.5 font-mono text-[11px] text-violet-500">
                     {milestone.stage} · {formatDate(milestone.date)}
                   </span>
                 </div>
@@ -305,7 +305,7 @@ export function GanttChart({
             { label: "Regulatory milestone", className: "bg-violet-500" },
           ]}
         />
-        <p className="text-[9px] text-zinc-500">
+        <p className="text-[11px] text-zinc-500">
           The bar ends at the engineering lock-in gate. The dot is the required-by date
           after qualification lead time and decision buffer.
         </p>

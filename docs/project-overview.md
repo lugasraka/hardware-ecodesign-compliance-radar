@@ -57,6 +57,14 @@ The 2027 flagship is the counter-example: its required-by date has already passe
 |---|---|
 | ![Portfolio review](screenshots/portfolio.png) | ![Requirement ledger](screenshots/product-detail.png) |
 
+| Product summary | Customize this product |
+|---|---|
+| ![Product summary](screenshots/product-hero.png) | ![Customize this product](screenshots/product-configurator.png) |
+
+| Guided tour | Requirements: actionable first |
+|---|---|
+| ![Guided tour](screenshots/tour.png) | ![Requirements](screenshots/product-requirements.png) |
+
 | Backward-scheduled NPI windows | Repairability scorecard |
 |---|---|
 | ![NPI decision windows](screenshots/product-schedule.png) | ![Repairability scorecard](screenshots/product-repairability.png) |

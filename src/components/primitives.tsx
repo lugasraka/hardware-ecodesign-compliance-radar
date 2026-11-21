@@ -73,7 +73,7 @@ export function Panel({
               </h2>
             ) : null}
             {description ? (
-              <p className="mt-0.5 text-[11px] leading-4 text-zinc-500">{description}</p>
+              <p className="mt-0.5 text-[13px] leading-4 text-zinc-500">{description}</p>
             ) : null}
           </div>
           {action ? <div className="shrink-0">{action}</div> : null}
@@ -112,7 +112,7 @@ export function KpiCard({
         {value}
       </p>
       {detail ? (
-        <p className="mt-1 text-[11px] leading-4 text-zinc-500">{detail}</p>
+        <p className="mt-1 text-[13px] leading-4 text-zinc-500">{detail}</p>
       ) : null}
     </div>
   );
@@ -177,7 +177,7 @@ export function StatusPill({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap",
+        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[12px] font-medium whitespace-nowrap",
         config.className,
       )}
     >
@@ -224,7 +224,7 @@ export function ProgramPill({ status }: { status: ProgramStatus }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap",
+        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[12px] font-medium whitespace-nowrap",
         config.className,
       )}
     >
@@ -258,7 +258,7 @@ export function EvidencePill({ status }: { status: EvidenceStatus }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium whitespace-nowrap",
+        "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[12px] font-medium whitespace-nowrap",
         config.className,
       )}
     >
@@ -288,7 +288,7 @@ export function SeverityPill({ severity }: { severity: Severity }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium",
+        "inline-flex items-center rounded-full border px-2 py-0.5 text-[12px] font-medium",
         config.className,
       )}
     >
@@ -299,7 +299,7 @@ export function SeverityPill({ severity }: { severity: Severity }) {
 
 export function MarketBadge({ market }: { market: MarketCode }) {
   return (
-    <span className="inline-flex rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 font-mono text-[9px] font-medium uppercase tracking-wide text-zinc-600">
+    <span className="inline-flex rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wide text-zinc-600">
       {market}
     </span>
   );
@@ -327,13 +327,13 @@ export function CoverageBar({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3">
-        <span className="text-[11px] font-medium text-zinc-700">{label}</span>
-        <span className="font-mono text-[10px] text-zinc-500 tabular">{percent}%</span>
+        <span className="text-[13px] font-medium text-zinc-700">{label}</span>
+        <span className="font-mono text-[12px] text-zinc-500 tabular">{percent}%</span>
       </div>
       <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-zinc-100">
         <div className={cn("h-full rounded-full", tone)} style={{ width: `${percent}%` }} />
       </div>
-      {detail ? <p className="mt-1 text-[10px] text-zinc-500">{detail}</p> : null}
+      {detail ? <p className="mt-1 text-[12px] text-zinc-500">{detail}</p> : null}
     </div>
   );
 }
@@ -344,7 +344,7 @@ export function Legend({
   items: { label: string; className: string }[];
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-3 text-[10px] text-zinc-500">
+    <div className="flex flex-wrap items-center gap-3 text-[12px] text-zinc-500">
       {items.map((item) => (
         <span key={item.label} className="inline-flex items-center gap-1.5">
           <span className={cn("h-2 w-2 rounded-sm", item.className)} />
@@ -364,9 +364,9 @@ export function EmptyState({
 }) {
   return (
     <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 px-4 py-8 text-center">
-      <p className="text-[12px] font-medium text-zinc-700">{title}</p>
+      <p className="text-[13px] font-medium text-zinc-700">{title}</p>
       {description ? (
-        <p className="mx-auto mt-1 max-w-md text-[11px] leading-5 text-zinc-500">
+        <p className="mx-auto mt-1 max-w-md text-[13px] leading-5 text-zinc-500">
           {description}
         </p>
       ) : null}

@@ -123,13 +123,13 @@ export function RiskRegister({
               <button
                 type="button"
                 onClick={() => setSelectedCell(null)}
-                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 py-1 text-[10px] font-medium text-zinc-600 hover:border-zinc-400"
+                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 bg-white px-2 py-1 text-[12px] font-medium text-zinc-600 hover:border-zinc-400"
               >
                 <FilterX size={11} />
                 Clear cell
               </button>
             ) : (
-              <span className="font-mono text-[10px] text-zinc-500">
+              <span className="font-mono text-[12px] text-zinc-500">
                 {openRisks.length} open
               </span>
             )
@@ -141,7 +141,7 @@ export function RiskRegister({
               {LIKELIHOOD.map((likelihood) => (
                 <div
                   key={likelihood}
-                  className="text-center font-mono text-[9px] text-zinc-500"
+                  className="text-center font-mono text-[11px] text-zinc-500"
                 >
                   L{likelihood}
                 </div>
@@ -149,7 +149,7 @@ export function RiskRegister({
             </div>
             {IMPACT.map((impact) => (
               <div key={impact} className="contents">
-                <div className="flex items-center justify-end pr-1 font-mono text-[9px] text-zinc-500">
+                <div className="flex items-center justify-end pr-1 font-mono text-[11px] text-zinc-500">
                   I{impact}
                 </div>
                 <div className="grid grid-cols-5 gap-1">
@@ -172,7 +172,7 @@ export function RiskRegister({
                           )
                         }
                         className={cn(
-                          "flex h-10 items-center justify-center rounded border text-[11px] font-semibold transition-all",
+                          "flex h-10 items-center justify-center rounded border text-[13px] font-semibold transition-all",
                           cellTone(score, count),
                           active
                             ? "ring-2 ring-zinc-900 ring-offset-1"
@@ -188,7 +188,7 @@ export function RiskRegister({
               </div>
             ))}
           </div>
-          <p className="mt-3 text-[9px] text-zinc-500">
+          <p className="mt-3 text-[11px] text-zinc-500">
             Impact rows run from 5 (highest) to 1. Likelihood columns run from 1 to 5.
           </p>
         </Panel>
@@ -221,7 +221,7 @@ export function RiskRegister({
           </div>
           <div className="mt-3 flex items-start gap-2 rounded-md border border-amber-200 bg-amber-50 px-3 py-2">
             <ShieldAlert size={14} className="mt-0.5 shrink-0 text-amber-700" />
-            <p className="text-[10px] leading-4 text-amber-900">
+            <p className="text-[12px] leading-4 text-amber-900">
               Market-access risks are never accepted above medium without a VP decision.
               The decision log links each risk to its brief.
             </p>
@@ -247,13 +247,13 @@ export function RiskRegister({
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search risks…"
-                className="h-7 w-40 rounded-md border border-zinc-300 bg-white pl-6 pr-2 text-[10px] outline-none placeholder:text-zinc-400 focus:border-blue-500"
+                className="h-7 w-40 rounded-md border border-zinc-300 bg-white pl-6 pr-2 text-[12px] outline-none placeholder:text-zinc-400 focus:border-blue-500"
               />
             </div>
             <select
               value={status}
               onChange={(event) => setStatus(event.target.value)}
-              className="h-7 rounded-md border border-zinc-300 bg-white px-1.5 text-[10px] text-zinc-700 outline-none focus:border-blue-500"
+              className="h-7 rounded-md border border-zinc-300 bg-white px-1.5 text-[12px] text-zinc-700 outline-none focus:border-blue-500"
             >
               <option value="all">All statuses</option>
               <option value="open">Open</option>
@@ -264,7 +264,7 @@ export function RiskRegister({
             <select
               value={owner}
               onChange={(event) => setOwner(event.target.value)}
-              className="h-7 max-w-[170px] rounded-md border border-zinc-300 bg-white px-1.5 text-[10px] text-zinc-700 outline-none focus:border-blue-500"
+              className="h-7 max-w-[170px] rounded-md border border-zinc-300 bg-white px-1.5 text-[12px] text-zinc-700 outline-none focus:border-blue-500"
             >
               <option value="all">All owners</option>
               {owners.map((ownerName) => (
@@ -303,7 +303,7 @@ export function RiskRegister({
                   ].map((header) => (
                     <th
                       key={header}
-                      className="px-2.5 py-2 text-[9px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
+                      className="px-2.5 py-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-500"
                     >
                       {header}
                     </th>
@@ -328,56 +328,56 @@ export function RiskRegister({
                         )}
                       >
                         <td className="max-w-[300px] px-2.5 py-2">
-                          <p className="text-[10px] font-medium leading-4 text-zinc-900">
+                          <p className="text-[12px] font-medium leading-4 text-zinc-900">
                             {risk.title}
                           </p>
-                          <p className="mt-0.5 line-clamp-1 text-[9px] text-zinc-500">
+                          <p className="mt-0.5 line-clamp-1 text-[11px] text-zinc-500">
                             {risk.description}
                           </p>
                         </td>
-                        <td className="px-2.5 py-2 text-[9px] text-zinc-600">
+                        <td className="px-2.5 py-2 text-[11px] text-zinc-600">
                           {risk.productId
                             ? productById.get(risk.productId)?.shortName ?? risk.productId
                             : "—"}
                         </td>
-                        <td className="px-2.5 py-2 font-mono text-[10px] text-zinc-600 tabular">
+                        <td className="px-2.5 py-2 font-mono text-[12px] text-zinc-600 tabular">
                           {risk.likelihood}
                         </td>
-                        <td className="px-2.5 py-2 font-mono text-[10px] text-zinc-600 tabular">
+                        <td className="px-2.5 py-2 font-mono text-[12px] text-zinc-600 tabular">
                           {risk.impact}
                         </td>
-                        <td className="px-2.5 py-2 font-mono text-[10px] font-semibold text-zinc-800 tabular">
+                        <td className="px-2.5 py-2 font-mono text-[12px] font-semibold text-zinc-800 tabular">
                           {score}
                         </td>
                         <td className="px-2.5 py-2">
                           <span
                             className={cn(
-                              "inline-flex rounded-full border px-1.5 py-0.5 text-[9px] font-medium",
+                              "inline-flex rounded-full border px-1.5 py-0.5 text-[11px] font-medium",
                               tierStyle(riskTier),
                             )}
                           >
                             {riskTier}
                           </span>
                         </td>
-                        <td className="px-2.5 py-2 text-[9px] text-zinc-600">
+                        <td className="px-2.5 py-2 text-[11px] text-zinc-600">
                           {risk.owner}
                         </td>
-                        <td className="px-2.5 py-2 font-mono text-[9px] text-zinc-500">
+                        <td className="px-2.5 py-2 font-mono text-[11px] text-zinc-500">
                           {formatDate(risk.dueDate)}
                         </td>
-                        <td className="px-2.5 py-2 text-[9px] capitalize text-zinc-600">
+                        <td className="px-2.5 py-2 text-[11px] capitalize text-zinc-600">
                           {risk.status}
                         </td>
                         <td className="px-2.5 py-2">
                           {decision ? (
                             <Link
                               href={`/brief/${decision.productId}/`}
-                              className="text-[9px] font-medium text-blue-700 hover:text-blue-800"
+                              className="text-[11px] font-medium text-blue-700 hover:text-blue-800"
                             >
                               Brief
                             </Link>
                           ) : (
-                            <span className="text-[9px] text-zinc-400">—</span>
+                            <span className="text-[11px] text-zinc-400">—</span>
                           )}
                         </td>
                       </tr>
@@ -399,7 +399,7 @@ export function RiskRegister({
             decisionByRisk.get(selectedRisk.id) ? (
               <Link
                 href={`/brief/${decisionByRisk.get(selectedRisk.id)?.productId}/`}
-                className="text-[10px] font-medium text-blue-700 hover:text-blue-800"
+                className="text-[12px] font-medium text-blue-700 hover:text-blue-800"
               >
                 Open decision brief
               </Link>
@@ -409,15 +409,15 @@ export function RiskRegister({
           <div className="grid gap-4 md:grid-cols-3">
             <div className="md:col-span-2">
               <p className="label">Description</p>
-              <p className="mt-1 text-[11px] leading-5 text-zinc-600">
+              <p className="mt-1 text-[13px] leading-5 text-zinc-600">
                 {selectedRisk.description}
               </p>
               <p className="label mt-3">Mitigation</p>
-              <p className="mt-1 text-[11px] leading-5 text-zinc-600">
+              <p className="mt-1 text-[13px] leading-5 text-zinc-600">
                 {selectedRisk.mitigation}
               </p>
               <p className="label mt-3">Contingency</p>
-              <p className="mt-1 text-[11px] leading-5 text-zinc-600">
+              <p className="mt-1 text-[13px] leading-5 text-zinc-600">
                 {selectedRisk.contingency}
               </p>
             </div>
@@ -438,8 +438,8 @@ export function RiskRegister({
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-baseline justify-between">
-                  <span className="text-[9px] text-zinc-500">{item.label}</span>
-                  <span className="font-mono text-[10px] font-medium text-zinc-800 tabular">
+                  <span className="text-[11px] text-zinc-500">{item.label}</span>
+                  <span className="font-mono text-[12px] font-medium text-zinc-800 tabular">
                     {item.value}
                   </span>
                 </div>

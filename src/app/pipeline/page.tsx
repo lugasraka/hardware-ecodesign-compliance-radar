@@ -82,7 +82,7 @@ export default function PipelinePage() {
         actions={
           <Link
             href="/methodology/#sources"
-            className="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 py-2 text-[12px] font-medium text-zinc-700 hover:border-zinc-400"
+            className="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 bg-white px-3 py-2 text-[13px] font-medium text-zinc-700 hover:border-zinc-400"
           >
             Sources
             <ArrowUpRight size={14} />
@@ -121,7 +121,7 @@ export default function PipelinePage() {
           title="Regulatory timeline"
           description="Milestones that can change a product decision, an evidence requirement, or a standards commitment."
           action={
-            <span className="inline-flex items-center gap-1 text-[10px] text-zinc-500">
+            <span className="inline-flex items-center gap-1 text-[12px] text-zinc-500">
               <CalendarClock size={12} />
               As of 20 Nov 2026
             </span>
@@ -131,7 +131,7 @@ export default function PipelinePage() {
             {years.map((year) => (
               <div key={year}>
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="font-mono text-[10px] font-semibold text-zinc-800">
+                  <span className="font-mono text-[12px] font-semibold text-zinc-800">
                     {year}
                   </span>
                   <span className="h-px flex-1 bg-zinc-200" />
@@ -147,12 +147,12 @@ export default function PipelinePage() {
                         className="grid gap-2 rounded-md border border-zinc-200 px-3 py-2.5 sm:grid-cols-[90px_minmax(0,1fr)]"
                       >
                         <div>
-                          <p className="font-mono text-[10px] font-medium text-zinc-800 tabular">
+                          <p className="font-mono text-[12px] font-medium text-zinc-800 tabular">
                             {formatDate(milestone.date)}
                           </p>
                           <span
                             className={cn(
-                              "mt-1 inline-flex rounded-full border px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wide",
+                              "mt-1 inline-flex rounded-full border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
                               STAGE_STYLES[milestone.stage],
                             )}
                           >
@@ -161,17 +161,17 @@ export default function PipelinePage() {
                         </div>
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                            <p className="text-[11px] font-medium leading-4 text-zinc-900">
+                            <p className="text-[13px] font-medium leading-4 text-zinc-900">
                               {milestone.title}
                             </p>
-                            <span className="font-mono text-[9px] text-zinc-400">
+                            <span className="font-mono text-[11px] text-zinc-400">
                               {instrument?.shortId ?? milestone.instrumentId}
                             </span>
                           </div>
-                          <p className="mt-1 text-[10px] leading-4 text-zinc-600">
+                          <p className="mt-1 text-[12px] leading-4 text-zinc-600">
                             {milestone.impact}
                           </p>
-                          <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[9px] text-zinc-500">
+                          <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-zinc-500">
                             <span>
                               Owner: <span className="text-zinc-700">{milestone.owner}</span>
                             </span>
@@ -185,7 +185,7 @@ export default function PipelinePage() {
                               <span>Window: {milestone.commentWindow}</span>
                             ) : null}
                           </div>
-                          <p className="mt-1 text-[9px] leading-4 text-zinc-500">
+                          <p className="mt-1 text-[11px] leading-4 text-zinc-500">
                             Action: {milestone.action}
                           </p>
                         </div>
@@ -211,20 +211,20 @@ export default function PipelinePage() {
                   className="rounded-md border border-zinc-200 px-3 py-2.5"
                 >
                   <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-[11px] font-semibold text-zinc-900">
+                    <p className="text-[13px] font-semibold text-zinc-900">
                       {position.title}
                     </p>
-                    <span className="font-mono text-[9px] text-zinc-400">
+                    <span className="font-mono text-[11px] text-zinc-400">
                       {position.instrument}
                     </span>
                   </div>
-                  <p className="mt-1 text-[10px] leading-4 text-zinc-600">
+                  <p className="mt-1 text-[12px] leading-4 text-zinc-600">
                     {position.position}
                   </p>
-                  <p className="mt-1.5 text-[9px] leading-4 text-zinc-500">
+                  <p className="mt-1.5 text-[11px] leading-4 text-zinc-500">
                     <span className="font-medium text-zinc-700">Ask:</span> {position.ask}
                   </p>
-                  <p className="mt-1 text-[9px] text-zinc-400">
+                  <p className="mt-1 text-[11px] text-zinc-400">
                     {position.owner} · {position.window}
                   </p>
                 </div>
@@ -261,10 +261,10 @@ export default function PipelinePage() {
                       <Icon size={13} />
                     </span>
                     <div>
-                      <p className="text-[10px] font-semibold text-zinc-900">
+                      <p className="text-[12px] font-semibold text-zinc-900">
                         {item.title}
                       </p>
-                      <p className="mt-0.5 text-[9px] leading-4 text-zinc-500">
+                      <p className="mt-0.5 text-[11px] leading-4 text-zinc-500">
                         {item.body}
                       </p>
                     </div>

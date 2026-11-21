@@ -53,19 +53,19 @@ export function PortfolioHeatmap({
         <table className="w-full min-w-[920px] border-collapse text-left">
           <thead>
             <tr className="border-b border-zinc-200">
-              <th className="sticky left-0 z-10 bg-white px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-zinc-500">
+              <th className="sticky left-0 z-10 bg-white px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-zinc-500">
                 Product
               </th>
               {KEY_INSTRUMENTS.map((instrument) => (
                 <th
                   key={instrument.id}
-                  className="px-1.5 py-2 text-center text-[9px] font-semibold uppercase leading-3 tracking-[0.05em] text-zinc-500"
+                  className="px-1.5 py-2 text-center text-[11px] font-semibold uppercase leading-3 tracking-[0.05em] text-zinc-500"
                   title={instrumentById.get(instrument.id)?.title}
                 >
                   {instrument.label}
                 </th>
               ))}
-              <th className="px-2 py-2 text-center text-[9px] font-semibold uppercase tracking-[0.05em] text-zinc-500">
+              <th className="px-2 py-2 text-center text-[11px] font-semibold uppercase tracking-[0.05em] text-zinc-500">
                 Overall
               </th>
             </tr>
@@ -81,11 +81,11 @@ export function PortfolioHeatmap({
                   <td className="sticky left-0 z-10 bg-white px-3 py-2.5 group-hover:bg-zinc-50">
                     <Link
                       href={`/products/${product.id}/`}
-                      className="block text-[12px] font-medium text-zinc-900 hover:text-blue-700"
+                      className="block text-[13px] font-medium text-zinc-900 hover:text-blue-700"
                     >
                       {product.shortName}
                     </Link>
-                    <span className="mt-0.5 block text-[10px] capitalize text-zinc-500">
+                    <span className="mt-0.5 block text-[12px] capitalize text-zinc-500">
                       {product.category.replace("_", " ")} · {product.status.replace("_", " ")}
                     </span>
                   </td>
@@ -109,7 +109,7 @@ export function PortfolioHeatmap({
                       return (
                         <td key={instrument.id} className="px-1.5 py-2.5 text-center">
                           <span
-                            className="inline-flex h-6 w-9 items-center justify-center rounded border border-zinc-100 bg-zinc-50 text-[10px] text-zinc-300"
+                            className="inline-flex h-6 w-9 items-center justify-center rounded border border-zinc-100 bg-zinc-50 text-[12px] text-zinc-300"
                             title={`${instrumentById.get(instrument.id)?.shortId}: not applicable`}
                           >
                             —
@@ -122,7 +122,7 @@ export function PortfolioHeatmap({
                       <td key={instrument.id} className="px-1.5 py-2.5 text-center">
                         <span
                           className={cn(
-                            "inline-flex h-6 w-9 items-center justify-center rounded border text-[10px] font-semibold tabular",
+                            "inline-flex h-6 w-9 items-center justify-center rounded border text-[12px] font-semibold tabular",
                             CELL_STYLES[status],
                           )}
                           title={`${instrumentById.get(instrument.id)?.shortId}: ${applicable.length} applicable, ${blockers} non-compliant, ${atRisk} at risk`}
@@ -151,7 +151,7 @@ export function PortfolioHeatmap({
             { label: "Not applicable", className: "bg-zinc-200" },
           ]}
         />
-        <p className="text-[10px] text-zinc-500">
+        <p className="text-[12px] text-zinc-500">
           Cell number = market-access blockers, or at-risk findings when there are no
           blockers.
         </p>

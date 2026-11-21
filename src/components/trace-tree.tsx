@@ -33,9 +33,9 @@ function TraceRow({ node, depth }: { node: TraceNode; depth: number }) {
       <div className="flex items-start gap-1.5 py-0.5">
         <Icon size={12} className={cn("mt-0.5 shrink-0", iconClass)} />
         <div className="min-w-0">
-          <p className="text-[11px] leading-4 text-zinc-700">{node.label}</p>
+          <p className="text-[13px] leading-4 text-zinc-700">{node.label}</p>
           {node.actual !== undefined ? (
-            <p className="text-[9px] leading-3 text-zinc-400">
+            <p className="text-[11px] leading-3 text-zinc-400">
               actual: <span className="font-mono">{formatValue(node.actual)}</span>
               {node.expected !== undefined ? (
                 <>

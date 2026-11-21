@@ -27,7 +27,7 @@ export function ProductRisks({
         action={
           <Link
             href="/risks/"
-            className="text-[10px] font-medium text-blue-700 hover:text-blue-800"
+            className="text-[12px] font-medium text-blue-700 hover:text-blue-800"
           >
             Full register
           </Link>
@@ -48,21 +48,21 @@ export function ProductRisks({
                   >
                     <span
                       className={cn(
-                        "mt-0.5 inline-flex h-6 w-7 shrink-0 items-center justify-center rounded border text-[10px] font-semibold tabular",
+                        "mt-0.5 inline-flex h-6 w-7 shrink-0 items-center justify-center rounded border text-[12px] font-semibold tabular",
                         riskTone(score),
                       )}
                     >
                       {score}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-medium leading-4 text-zinc-900">
+                      <p className="text-[13px] font-medium leading-4 text-zinc-900">
                         {risk.title}
                       </p>
-                      <p className="mt-0.5 text-[9px] leading-4 text-zinc-500">
+                      <p className="mt-0.5 text-[11px] leading-4 text-zinc-500">
                         {risk.owner} · due {formatDate(risk.dueDate)} ·{" "}
                         {risk.status.replace("_", " ")}
                       </p>
-                      <p className="mt-1 text-[9px] leading-4 text-zinc-500">
+                      <p className="mt-1 text-[11px] leading-4 text-zinc-500">
                         Mitigation: {risk.mitigation}
                       </p>
                     </div>
@@ -89,20 +89,20 @@ export function ProductRisks({
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-[11px] font-medium leading-4 text-zinc-900 group-hover:text-blue-800">
+                    <p className="text-[13px] font-medium leading-4 text-zinc-900 group-hover:text-blue-800">
                       {decision.title}
                     </p>
-                    <p className="mt-0.5 text-[9px] text-zinc-500">
+                    <p className="mt-0.5 text-[11px] text-zinc-500">
                       {decision.owner} · needed by {formatDate(decision.decisionDate)} ·{" "}
                       {decision.status}
                     </p>
                   </div>
                   <FileText size={13} className="mt-0.5 shrink-0 text-zinc-400" />
                 </div>
-                <p className="mt-1 line-clamp-2 text-[9px] leading-4 text-zinc-500">
+                <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-zinc-500">
                   Recommendation: {decision.recommendation}
                 </p>
-                <span className="mt-1 inline-flex items-center gap-1 text-[9px] font-medium text-blue-700">
+                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-blue-700">
                   Open decision brief
                   <ArrowRight size={10} />
                 </span>

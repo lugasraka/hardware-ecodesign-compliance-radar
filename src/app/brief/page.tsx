@@ -6,7 +6,7 @@ export default function BriefIndexPage() {
   if (!brief) {
     return (
       <div className="rounded-lg border border-zinc-200 bg-white px-4 py-8 text-center">
-        <p className="text-[12px] font-medium text-zinc-700">
+        <p className="text-[13px] font-medium text-zinc-700">
           No decision brief is available for the default product.
         </p>
       </div>

@@ -11,13 +11,13 @@ export default function NotFound() {
       <h1 className="mt-1 text-2xl font-semibold tracking-tight text-zinc-950">
         This route is not in the program.
       </h1>
-      <p className="mt-2 max-w-md text-[12px] leading-6 text-zinc-500">
+      <p className="mt-2 max-w-md text-[13px] leading-6 text-zinc-500">
         The page may have moved, or the product is not part of this demo portfolio. The
         portfolio view has every product and regulatory workstream.
       </p>
       <Link
         href="/"
-        className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-blue-700 px-3 py-2 text-[11px] font-medium text-white hover:bg-blue-800"
+        className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-blue-700 px-3 py-2 text-[13px] font-medium text-white hover:bg-blue-800"
       >
         <ArrowLeft size={13} />
         Back to portfolio

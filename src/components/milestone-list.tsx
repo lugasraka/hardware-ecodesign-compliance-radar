@@ -36,12 +36,12 @@ export function MilestoneList({
       {upcoming.map((milestone) => (
         <div key={milestone.id} className="flex items-start gap-3 py-3 first:pt-0 last:pb-0">
           <div className="w-16 shrink-0">
-            <p className="font-mono text-[10px] font-medium text-zinc-800 tabular">
+            <p className="font-mono text-[12px] font-medium text-zinc-800 tabular">
               {formatDate(milestone.date)}
             </p>
             <span
               className={cn(
-                "mt-1 inline-flex rounded-full border px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wide",
+                "mt-1 inline-flex rounded-full border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
                 STAGE_STYLES[milestone.stage],
               )}
             >
@@ -49,17 +49,17 @@ export function MilestoneList({
             </span>
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[12px] font-medium leading-5 text-zinc-900">
+            <p className="text-[13px] font-medium leading-5 text-zinc-900">
               {milestone.title}
             </p>
-            <p className="mt-0.5 text-[10px] leading-4 text-zinc-500">
+            <p className="mt-0.5 text-[12px] leading-4 text-zinc-500">
               {instrumentById.get(milestone.instrumentId)?.shortId ?? milestone.instrumentId} ·{" "}
               {milestone.impact}
             </p>
           </div>
           <Link
             href="/pipeline/"
-            className="mt-0.5 shrink-0 text-[10px] font-medium text-blue-700 hover:text-blue-800"
+            className="mt-0.5 shrink-0 text-[12px] font-medium text-blue-700 hover:text-blue-800"
           >
             Watch
           </Link>
