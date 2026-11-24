@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { stableFingerprint } from "@/lib/fingerprint";
+import {
+  getReadableFingerprint,
+  stableFingerprint,
+} from "@/lib/fingerprint";
 
 describe("source fingerprint", () => {
   it("ignores markup, scripts, styles, and rotating attributes", () => {
@@ -36,5 +39,18 @@ describe("source fingerprint", () => {
 
   it("falls back to trimmed text for invalid JSON", () => {
     expect(stableFingerprint("  not json  ", "json")).toBe("not json");
+  });
+
+  it("rejects empty or markup-only content", () => {
+    expect(() => getReadableFingerprint("", "html")).toThrow(
+      "Source returned no readable content",
+    );
+    expect(() =>
+      getReadableFingerprint("<script>challenge()</script>", "html"),
+    ).toThrow("Source returned no readable content");
+    expect(() => getReadableFingerprint("", "json")).toThrow(
+      "Source returned no readable content",
+    );
+    expect(getReadableFingerprint("<p>Rules</p>", "html")).toBe("Rules");
   });
 });

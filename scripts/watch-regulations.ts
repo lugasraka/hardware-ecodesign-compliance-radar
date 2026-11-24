@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { regulatorySources, type RegulatorySource } from "../src/data/regulatory-sources";
-import { stableFingerprint } from "../src/lib/fingerprint";
+import { getReadableFingerprint } from "../src/lib/fingerprint";
 
 const STATE_VERSION = 2;
 
@@ -39,13 +39,21 @@ function hash(value: string): string {
   return createHash("sha256").update(value).digest("hex");
 }
 
+// A blocked or empty response can leave the hash of an empty body in the
+// state file. Treat it as a missing baseline, never as a real change.
+const EMPTY_CONTENT_HASH = hash("");
+
+function isUsableHash(value: string | undefined): value is string {
+  return Boolean(value) && value !== EMPTY_CONTENT_HASH;
+}
+
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function fetchFingerprint(source: RegulatorySource): Promise<string> {
-  const body = await fetchText(source.url);
-  return hash(stableFingerprint(body, source.kind));
+  const body = await fetchText(source);
+  return hash(getReadableFingerprint(body, source.kind));
 }
 
 async function confirmFingerprint(
@@ -57,8 +65,7 @@ async function confirmFingerprint(
     return { hash: firstHash, changed: false };
   }
 
-  // EUR-Lex occasionally serves a transient variant. Confirm a change with a
-  // second request before it enters the review queue.
+  // Confirm a change with a second request before it enters the review queue.
   await delay(CONFIRM_DELAY_MS);
   const secondHash = await fetchFingerprint(source);
 
@@ -69,9 +76,10 @@ async function confirmFingerprint(
   return { hash: secondHash, changed: true };
 }
 
-async function fetchText(url: string): Promise<string> {
+async function fetchText(source: RegulatorySource): Promise<string> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const url = source.checkUrl ?? source.url;
 
   try {
     const response = await fetch(url, {
@@ -79,8 +87,19 @@ async function fetchText(url: string): Promise<string> {
       headers: {
         "user-agent":
           "hardware-ecodesign-compliance-radar/0.1 regulatory-watch (portfolio prototype)",
+        accept:
+          source.kind === "json"
+            ? "application/json"
+            : "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en",
       },
     });
+
+    // EUR-Lex returns 202 with an empty or challenge body to automated
+    // clients. Treat it as an access failure, not a content change.
+    if (response.status === 202) {
+      throw new Error("HTTP 202: automated access blocked");
+    }
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
@@ -153,20 +172,30 @@ async function main() {
     }
 
     const previous = state.sources[source.id];
+    const previousHash = isUsableHash(previous?.hash)
+      ? previous.hash
+      : undefined;
     try {
       const firstHash = await fetchFingerprint(source);
       const { hash: nextHash, changed } = await confirmFingerprint(
         source,
         firstHash,
-        previous?.hash,
+        previousHash,
       );
       const recovered = previous?.status === "error";
+      const isBaseline = !previousHash;
+      let lastChanged: string | null = previous?.lastChanged ?? null;
+      if (changed || recovered) {
+        lastChanged = checkedAt;
+      } else if (isBaseline) {
+        // A missing or empty-content hash is a baseline, not a real change.
+        lastChanged = null;
+      }
 
       state.sources[source.id] = {
         hash: nextHash,
         lastChecked: checkedAt,
-        lastChanged:
-          changed || recovered ? checkedAt : (previous?.lastChanged ?? checkedAt),
+        lastChanged,
         status: "ok",
       };
 
@@ -186,7 +215,7 @@ async function main() {
       }
 
       console.log(
-        `${changed || recovered ? "CHANGED" : previous?.hash ? "unchanged" : "baseline"} ${source.id}`,
+        `${changed || recovered ? "CHANGED" : isBaseline ? "baseline" : "unchanged"} ${source.id}`,
       );
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -194,7 +223,7 @@ async function main() {
         previous?.status !== "error" || previous.message !== message;
 
       state.sources[source.id] = {
-        hash: previous?.hash ?? "",
+        hash: isUsableHash(previous?.hash) ? previous.hash : "",
         lastChecked: checkedAt,
         lastChanged: previous?.lastChanged ?? null,
         status: "error",
@@ -221,7 +250,7 @@ async function main() {
   const nextSignature = stateSignature(state.sources);
   const baseline = automatedSources.some(
     (source) =>
-      !previousSources[source.id]?.hash &&
+      !isUsableHash(previousSources[source.id]?.hash) &&
       state.sources[source.id]?.status === "ok",
   );
   const shouldWrite =

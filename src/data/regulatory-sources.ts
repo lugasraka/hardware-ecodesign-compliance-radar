@@ -2,17 +2,23 @@ export interface RegulatorySource {
   id: string;
   label: string;
   url: string;
+  checkUrl?: string;
   instrumentId?: string;
   kind: "html" | "json";
   check: "http" | "manual";
   note?: string;
 }
 
+// EUR-Lex blocks automated clients with HTTP 202 and an empty body on its
+// human-facing ELI pages. The four EUR-Lex instruments use the Publications
+// Office Cellar representation of the same CELEX act for the weekly check;
+// `url` remains the page reviewers should open.
 export const regulatorySources: RegulatorySource[] = [
   {
     id: "eu-2023-1670",
     label: "EUR-Lex: EU 2023/1670 smartphones and tablets",
     url: "https://eur-lex.europa.eu/eli/reg/2023/1670/oj/eng",
+    checkUrl: "https://publications.europa.eu/resource/celex/32023R1670",
     instrumentId: "eu-2023-1670",
     kind: "html",
     check: "http",
@@ -21,6 +27,7 @@ export const regulatorySources: RegulatorySource[] = [
     id: "eu-2023-1542",
     label: "EUR-Lex: EU 2023/1542 Batteries Regulation",
     url: "https://eur-lex.europa.eu/eli/reg/2023/1542/oj/eng",
+    checkUrl: "https://publications.europa.eu/resource/celex/32023R1542",
     instrumentId: "eu-2023-1542",
     kind: "html",
     check: "http",
@@ -29,6 +36,7 @@ export const regulatorySources: RegulatorySource[] = [
     id: "eu-2025-2052",
     label: "EUR-Lex: EU 2025/2052 external power supplies",
     url: "https://eur-lex.europa.eu/eli/reg/2025/2052/oj/eng",
+    checkUrl: "https://publications.europa.eu/resource/celex/32025R2052",
     instrumentId: "eu-2025-2052",
     kind: "html",
     check: "http",
@@ -37,6 +45,7 @@ export const regulatorySources: RegulatorySource[] = [
     id: "eu-2024-1781",
     label: "EUR-Lex: EU 2024/1781 ESPR",
     url: "https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng",
+    checkUrl: "https://publications.europa.eu/resource/celex/32024R1781",
     instrumentId: "eu-2024-1781",
     kind: "html",
     check: "http",

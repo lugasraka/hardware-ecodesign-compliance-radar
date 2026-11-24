@@ -1,40 +1,40 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-24T07:43:28.124Z",
+  "checkedAt": "2026-11-24T09:03:50.792Z",
   "sources": {
     "eu-2023-1670": {
-      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
-      "lastChanged": "2026-11-24T07:43:28.124Z",
+      "hash": "0cba9fabe50ca5a17d68624e4d48f8b60c0f567b259082f71fec86ebf00283cd",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
+      "lastChanged": null,
       "status": "ok"
     },
     "eu-2023-1542": {
-      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
-      "lastChanged": "2026-11-24T07:43:28.124Z",
+      "hash": "6f1031a7be09f5995b2e89d72e458d94c8807364a94131e19d780c7691f70524",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
+      "lastChanged": null,
       "status": "ok"
     },
     "eu-2025-2052": {
-      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
-      "lastChanged": "2026-11-24T07:43:28.124Z",
+      "hash": "2aa8a595332767d31fa82ddc2d12fc9a4ebcafbe8124d8891affdb70f285e7d1",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
+      "lastChanged": null,
       "status": "ok"
     },
     "eu-2024-1781": {
-      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
-      "lastChanged": "2026-11-24T07:43:28.124Z",
+      "hash": "c7063a2ca9d5264616ecca651901ed33470e3e0e78f8e5b0b893c8ff35375f59",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
+      "lastChanged": null,
       "status": "ok"
     },
     "eu-dpp-registry": {
       "hash": "c5ae65fe9db73b9096682ec64c62403d3f928e63ec90a36d0be4795ed31c0cb5",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
       "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "us-federal-register-eps": {
       "hash": "f51340abd53eab60c8a506d89ed419970966e8078750402244da27ad6999c20a",
-      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChecked": "2026-11-24T09:03:50.792Z",
       "lastChanged": "2026-11-21T10:14:22.838Z",
       "status": "ok"
     }

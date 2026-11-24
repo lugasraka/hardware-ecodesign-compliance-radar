@@ -10,6 +10,8 @@
 
 The action runs `scripts/watch-regulations.ts`. It fetches each automated source listed in `src/data/regulatory-sources.ts`, strips markup and scripts, hashes the remaining text, and compares it with `data/source-state.json`. A changed hash is fetched a second time before it is reported, so a transient response does not create noise.
 
+EUR-Lex blocks automated clients on its human-facing ELI pages with HTTP 202 and no readable body. The four EUR-Lex instruments are checked through the Publications Office Cellar representation of the same CELEX act (`checkUrl`). The `url` field stays the EUR-Lex page reviewers open. A 202, an empty body, or an empty normalized fingerprint is recorded as a source error, not a content change.
+
 If the confirmed hash changes, the script writes a candidate to `data/regulatory-watch.generated.json` and the action opens a pull request. The pull request changes only `data/`. It never changes the clause library.
 
 Some official portals block automated requests. Those sources are marked `check: "manual"` and stay on the quarterly review list. The current manual sources are the California Legislature portal and the CPCB e-waste site.
@@ -37,6 +39,7 @@ A changed page is a signal, not a legal conclusion.
 - `lastVerified`: the date the official source was last checked.
 - `nextReviewDue`: computed as three months after `lastVerified`.
 - `sourceUrl`: the official text, not a secondary summary.
+- `checkUrl`: the fetchable URL used by the weekly check when it differs from the human-facing `url`.
 - `interpretationStatus`: settled, guidance, contested, or pending.
 - `reviewedBy`: the person who signed off the release.
 - `dataReleases`: the changelog record for the app.
@@ -48,6 +51,7 @@ A changed page is a signal, not a legal conclusion.
 - Do not publish a scraped page change as a legal change.
 - Do not merge a generated candidate without opening the official text.
 - Do not treat a source error as a regulatory change. Verify the URL first.
+- Do not treat a 202, an empty body, or a challenge page as a regulatory change. Verify the URL and the response first.
 - Do not claim the app is always current. Say it is monitored and reviewed, with a visible date.
 
 ## First run

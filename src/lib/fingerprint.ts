@@ -47,3 +47,19 @@ export function stableFingerprint(
     .replace(/\s+/g, " ")
     .trim();
 }
+
+/**
+ * Return the normalized content, or fail loudly when the response has no
+ * readable text. An empty fingerprint must never be treated as a source
+ * change: bot challenges and blocked requests can return a 2xx with no body.
+ */
+export function getReadableFingerprint(
+  body: string,
+  kind: FingerprintKind,
+): string {
+  const fingerprint = stableFingerprint(body, kind);
+  if (!fingerprint) {
+    throw new Error("Source returned no readable content");
+  }
+  return fingerprint;
+}
