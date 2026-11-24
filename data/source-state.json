@@ -1,40 +1,40 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-21T10:14:28.390Z",
+  "checkedAt": "2026-11-24T07:43:28.124Z",
   "sources": {
     "eu-2023-1670": {
-      "hash": "41be4e743934ae12c689c126f0011637a8472a2493c1ceee018cf43232f33500",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
-      "lastChanged": "2026-11-21T10:14:28.390Z",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "eu-2023-1542": {
-      "hash": "2ae3707f6870b77afa0d81a00d410dc501ddd2a101ec14ecaa1aa0a0d375c7b9",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
-      "lastChanged": "2026-11-21T10:14:28.390Z",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "eu-2025-2052": {
-      "hash": "91c7ecec862776680c39f1542a38ef6e42c42bafbee0f42495cc23b12a574df9",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
-      "lastChanged": "2026-11-21T10:14:28.390Z",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "eu-2024-1781": {
-      "hash": "6773b2c194c4025c79ffda03e22cfd429aceb8a42d5c36be4534d0054ad853a7",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
-      "lastChanged": "2026-11-21T10:14:28.390Z",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "eu-dpp-registry": {
-      "hash": "e517e16e7c9758e68c0ae20e9de66d116cd90bf4b4de33388fac65d5cc93b665",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
-      "lastChanged": "2026-11-21T10:14:22.838Z",
+      "hash": "c5ae65fe9db73b9096682ec64c62403d3f928e63ec90a36d0be4795ed31c0cb5",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
+      "lastChanged": "2026-11-24T07:43:28.124Z",
       "status": "ok"
     },
     "us-federal-register-eps": {
       "hash": "f51340abd53eab60c8a506d89ed419970966e8078750402244da27ad6999c20a",
-      "lastChecked": "2026-11-21T10:14:28.390Z",
+      "lastChecked": "2026-11-24T07:43:28.124Z",
       "lastChanged": "2026-11-21T10:14:22.838Z",
       "status": "ok"
     }
